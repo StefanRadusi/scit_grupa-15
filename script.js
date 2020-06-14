@@ -1,11 +1,9 @@
 console.log("functions and scope");
-console.log("functions and scope");
+console.log("Onet Alexandra - functions and scope");
 
 let array = ["Rock", "Paper", "Scissors"];
 const ComputerChoice = array[Math.floor(array.length * Math.random())];
 const UserChoice = array[Math.floor(array.length * Math.random())];
-console.log(ComputerChoice);
-console.log(UserChoice);
 
 function play() {
   if (ComputerChoice === UserChoice) {
