@@ -1,17 +1,33 @@
 <html>
   <head>
-    <title>This is Git</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Dom Manipulation Homework</title>
+    <link type="text/css" rel="stylesheet" href="./style.css" />
   </head>
+  <body id="body">
+    <div class="form-container">
+      <h2>Contact form</h2>
+      <div class="form-fields">
+        <div class="field">
+          <p>Name</p>
+          <input id="name" autocomplete="off" />
+        </div>
+        <div class="field">
+          <p>Surname</p>
+          <input id="surname" autocomplete="off" />
+        </div>
+        <div class="field">
+          <p>Mobile</p>
+          <input id="mobile" autocomplete="off" />
+        </div>
+      </div>
+      <div class="add-field-container">
+        <button id="addFiled">Add Field</button>
+        <input id="fieldName" />
+      </div>
 
-  <body>
-    <p>This is a git example</p>
-    <p>Angel</p>
-    <p>Alex</p>
-    <p>Diana</p>
-    <p>Sergiu</p>
-    <p>Alexandra</p>
-    <p>Adelina</p>
-    <p>Gabi</p>
+      <button id="send">Send</button>
+    </div>
+
+    <script src="./script.js"></script>
   </body>
 </html>
