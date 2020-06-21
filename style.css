@@ -1,3 +1,137 @@
-p {
-  color: red;
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+  width: 100%;
+  height: 50px;
+  background: lightgray;
+  display: flex;
+  align-items: center;
+}
+
+.fa-home {
+  font-size: 30px;
+  margin-left: 10px;
+  color: grey;
+}
+
+.header-buttons {
+  background: grey;
+  color: white;
+  margin-left: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+#search {
+  margin-left: auto;
+  margin-right: 10px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.comment-header,
+.article-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.article {
+  margin: 20px;
+  border-bottom: 2px solid lightgray;
+}
+
+.comment-header h3,
+.comment-header p,
+.article-header h1,
+.article-header p {
+  margin-bottom: 0px;
+}
+
+.article-date {
+  font-weight: bold;
+}
+
+.article-short-description {
+  height: 100px;
+
+  overflow: auto;
+}
+
+.article:last-child {
+  border-bottom: none;
+}
+
+.comment {
+  border: 1px solid lightgray;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.comments-buttons {
+  display: flex;
+  margin-bottom: 5px;
+}
+
+.comments-buttons button {
+  font-size: 20px;
+  width: 80px;
+  outline: none;
+}
+
+.selected {
+  background: grey;
+  color: white;
+}
+
+/* we need position relative so the if we position absolute the child it will take the position correctly */
+.comments {
+  position: relative;
+}
+
+/* we position absolute the 2 containers so that the overlap*/
+.comments-read,
+.comments-edit {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  /* as default we hide them with display none */
+  display: none;
+}
+
+.comments-edit {
+  width: 300px;
+  height: 500px;
+
+  flex-direction: column;
+}
+
+/* when this class is added the read comments section is visible */
+.comments-selected-read {
+  display: block;
+}
+
+/* when this class is added the edit comments section is visible */
+.comments-selected-edit {
+  display: flex;
+}
+
+#user-name {
+  padding: 5px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+#comment-area {
+  height: 200px;
+  border-radius: 5px;
+  margin-bottom: 10px;
 }

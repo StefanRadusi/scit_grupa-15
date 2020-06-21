@@ -1,0 +1,119 @@
+<html>
+  <head>
+    <title>Blog</title>
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="./utils.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <a href="index.html"><i class="fas fa-home"></i></a>
+
+      <a class="header-buttons" href="">ABOUT</a>
+    </div>
+    <div class="articles-container">
+      <div class="article">
+        <div class="article-header">
+          <h1 class="article-title">Art 1</h1>
+          <p class="article-date">25.12.2019</p>
+        </div>
+
+        <p class="article-content">
+          Contrary to popular belief, Lorem Ipsum is not simply random text. It
+          has roots in a piece of classical Latin literature from 45 BC, making
+          it over 2000 years old. Richard McClintock, a Latin professor at
+          Hampden-Sydney College in Virginia, looked up one of the more obscure
+          Latin words, consectetur, from a Lorem Ipsum passage, and going
+          through the cites of the word in classical literature, discovered the
+          undoubtable source. Lorem Ipsum comes from sections 1.10.32 and
+          1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and
+          Evil) by Cicero, written in 45 BC. This book is a treatise on the
+          theory of ethics, very popular during the Renaissance. The first line
+          of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in
+          section 1.10.32. The standard chunk of Lorem Ipsum used since the
+          1500s is reproduced below for those interested. Sections 1.10.32 and
+          1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also
+          reproduced in their exact original form, accompanied by English
+          versions from the 1914 translation by H. Rackham. Contrary to popular
+          belief, Lorem Ipsum is not simply random text. It has roots in a piece
+          of classical Latin literature from 45 BC, making it over 2000 years
+          old. Richard McClintock, a Latin professor at Hampden-Sydney College
+          in Virginia, looked up one of the more obscure Latin words,
+          consectetur, from a Lorem Ipsum passage, and going through the cites
+          of the word in classical literature, discovered the undoubtable
+          source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de
+          Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero,
+          written in 45 BC. This book is a treatise on the theory of ethics,
+          very popular during the Renaissance. The first line of Lorem Ipsum,
+          "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+          The standard chunk of Lorem Ipsum used since the 1500s is reproduced
+          below for those interested. Sections 1.10.32 and 1.10.33 from "de
+          Finibus Bonorum et Malorum" by Cicero are also reproduced in their
+          exact original form, accompanied by English versions from the 1914
+          translation by H. Rackham. Contrary to popular belief, Lorem Ipsum is
+          not simply random text. It has roots in a piece of classical Latin
+          literature from 45 BC, making it over 2000 years old. Richard
+          McClintock, a Latin professor at Hampden-Sydney College in Virginia,
+          looked up one of the more obscure Latin words, consectetur, from a
+          Lorem Ipsum passage, and going through the cites of the word in
+          classical literature, discovered the undoubtable source. Lorem Ipsum
+          comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et
+          Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC.
+          This book is a treatise on the theory of ethics, very popular during
+          the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit
+          amet..", comes from a line in section 1.10.32. The standard chunk of
+          Lorem Ipsum used since the 1500s is reproduced below for those
+          interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et
+          Malorum" by Cicero are also reproduced in their exact original form,
+          accompanied by English versions from the 1914 translation by H.
+          Rackham.
+        </p>
+        <div class="comments-container">
+          <div class="comments-buttons">
+            <button id="read" class="selected">Read</button>
+            <button id="add">Add</button>
+          </div>
+          <div class="comments">
+            <div id="read-section" class="comments-read comments-selected-read">
+              <div class="comment">
+                <div class="comment-header">
+                  <h3 class="comment-title">Art 3</h3>
+                  <p class="comment-date">10.11.2019</p>
+                </div>
+
+                <p class="comment-content">
+                  Contrary to popular belief, Lorem Ipsum is not simply random
+                  text. It has roots in a piece of classical Latin literature
+                  from 45 BC, making it over 2000 years old. Richard McClintock
+                </p>
+              </div>
+              <div class="comment">
+                <div class="comment-header">
+                  <h3 class="comment-title">Art 3</h3>
+                  <p class="comment-date">10.11.2019</p>
+                </div>
+
+                <p class="comment-content">
+                  Contrary to popular belief, Lorem Ipsum is not simply random
+                  text. It has roots in a piece of classical Latin literature
+                  from 45 BC, making it over 2000 years old. Richard McClintock
+                </p>
+              </div>
+            </div>
+            <div id="edit-section" class="comments-edit ">
+              <input id="user-name" placeholder="user name" />
+
+              <textarea
+                id="comment-area"
+                placeholder="write a comment"
+              ></textarea>
+              <button id="submit">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./toggleCommentsView.js"></script>
+    <script src="./addComment.js"></script>
+  </body>
+</html>
