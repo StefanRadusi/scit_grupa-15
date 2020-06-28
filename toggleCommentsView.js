@@ -3,3 +3,7 @@
 // "showReadSection" and "showEditSection" functions are called when "click" event is triggered on "read" and "add" buttons
 document.getElementById("read").addEventListener("click", showReadSection);
 document.getElementById("add").addEventListener("click", showEditSection);
+
+
+
+

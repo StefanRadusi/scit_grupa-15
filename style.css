@@ -58,7 +58,7 @@ body {
 
 .article-short-description {
   height: 100px;
-
+  display:none;
   overflow: auto;
 }
 
@@ -135,3 +135,12 @@ body {
   border-radius: 5px;
   margin-bottom: 10px;
 }
+
+.preview-button{margin-right: 15px;
+font-size: 10px;
+align-self: flex-end;
+color:gray;
+cursor: pointer;}
+
+.article-selected-read{display:block ;}
+

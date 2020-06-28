@@ -5,9 +5,11 @@ const listOfArticles = document.getElementsByClassName("article");
 // in every iteration the constant "article" becomes the current element of the array of articles
 for (const article of listOfArticles) {
   // we want to redirect the user to the correct page so we react to click on the article
-  article.addEventListener("click", function() {
+  article.addEventListener("click", function () {
     // by using the dom element's id we ca create the page name needed in redirecting
     const articleId = article.id;
     location.href = articleId + ".html";
+
+
   });
 }

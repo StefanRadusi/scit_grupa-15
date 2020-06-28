@@ -3,7 +3,7 @@ document.getElementById("submit").addEventListener("click", function() {
   const userNameInputDOM = document.getElementById("user-name");
   // the dom elements in which you can type text usually have a value key
   // we can use this key to get the current text present in the input
-  const userNameValue = userNameInputDOM.value;
+  let userNameValue = userNameInputDOM.value;
 
   // in case the input is empty we want to alert the user that he must do something if he want to add a comment
   // we alert the user by coloring the input border red
@@ -13,7 +13,7 @@ document.getElementById("submit").addEventListener("click", function() {
 
   //similar logic for the textArea component which contains the comment content
   const commentAreaDOM = document.getElementById("comment-area");
-  const commentAreaValue = commentAreaDOM.value;
+  let commentAreaValue = commentAreaDOM.value;
   if (commentAreaValue === "") {
     commentAreaDOM.style.borderColor = "red";
   }
@@ -22,17 +22,25 @@ document.getElementById("submit").addEventListener("click", function() {
   if (userNameValue && commentAreaValue) {
     // "showReadSection" function is present in "utils.js" and have the functionality of hiding the add comment section showing read comment section
     // we call the this function in order to see directly the new added comment after the submit button in clicked
+   
     showReadSection();
 
     // this function is responsible creating the new comment using the values from input and textArea
     createComment(userNameValue, commentAreaValue);
+    if(userNameInputDOM&&commentAreaDOM){
+      userNameInputDOM.value= "";
+      commentAreaDOM.value="";}
+   
   }
 });
 
 function createComment(userNameValue, commentAreaValue) {
+  const parent= document.getElementById("read-section");
   const commentContainer = document.createElement("div");
   commentContainer.className = "comment";
-  document.getElementById("read-section").appendChild(commentContainer);
+  parent.insertBefore(commentContainer, parent.childNodes[0]);
+
+
 
   const commentHeader = document.createElement("div");
   commentHeader.className = "comment-header";
@@ -45,6 +53,9 @@ function createComment(userNameValue, commentAreaValue) {
 
   const commentDate = document.createElement("p");
   commentDate.className = "comment-date";
+ 
+ 
+
 
   // the date field of the comment is created automatically using the native JavaScript object "Date"
   // when we created the object the current date and hour will be stored
@@ -56,6 +67,7 @@ function createComment(userNameValue, commentAreaValue) {
   commentContent.className = "comment-content";
   commentContent.innerText = commentAreaValue;
   commentContainer.appendChild(commentContent);
+  
 }
 
 function formatDate(date) {
@@ -65,3 +77,4 @@ function formatDate(date) {
 
   return day + "." + (monthIndex + 1) + "." + year;
 }
+
