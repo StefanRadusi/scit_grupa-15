@@ -7,32 +7,46 @@ document.getElementById("submit").addEventListener("click", function() {
 
   // in case the input is empty we want to alert the user that he must do something if he want to add a comment
   // we alert the user by coloring the input border red
-  if (userNameValue === "") {
+  
+ 
+  
+  if (userNameValue === "" ) {
     userNameInputDOM.style.borderColor = "red";
   }
 
   //similar logic for the textArea component which contains the comment content
   const commentAreaDOM = document.getElementById("comment-area");
   const commentAreaValue = commentAreaDOM.value;
-  if (commentAreaValue === "") {
+    
+  if (commentAreaValue === "" ) {
     commentAreaDOM.style.borderColor = "red";
   }
 
-  // only create the comment in the comments section if both the input and textArea have text in it
+  // only create the comment in the comments section if both the input and textArea have text in it 
+  
+
   if (userNameValue && commentAreaValue) {
     // "showReadSection" function is present in "utils.js" and have the functionality of hiding the add comment section showing read comment section
-    // we call the this function in order to see directly the new added comment after the submit button in clicked
+    // we call this function in order to see directly the new added comment after the submit button in clicked
     showReadSection();
 
-    // this function is responsible creating the new comment using the values from input and textArea
+    // this function is responsible of creating the new comment using the values from input and textArea
     createComment(userNameValue, commentAreaValue);
+
+
+    //clear user name and text area
+    document.getElementById("add").addEventListener("click", function (){
+      userNameInputDOM.value = "";
+      commentAreaDOM.value = "";
+    })
   }
 });
 
-function createComment(userNameValue, commentAreaValue) {
+function createComment(userNameValue, commentAreaValue) {  
+  
   const commentContainer = document.createElement("div");
   commentContainer.className = "comment";
-  document.getElementById("read-section").appendChild(commentContainer);
+  document.getElementById("read-section").insertBefore(commentContainer, document.getElementById("read-section").childNodes[0]);
 
   const commentHeader = document.createElement("div");
   commentHeader.className = "comment-header";
