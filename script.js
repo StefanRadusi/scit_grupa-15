@@ -1,33 +1,70 @@
 console.log("start");
 
-// example of reacting to button click
+
+const div = document.querySelector(".form-fields")
+
+const button = document.getElementById("addFiled");
+let newValue = document.getElementById("fieldName");
+
+button.addEventListener("click", validateInput);
+
+function validateInput() {
+    if (newValue.value === "" || newValue.value === "null")
+        newValue.style.borderColor = "red";
+    else return addNewInput();
+
+}
+
+function addNewInput() {
+    const newDiv = document.createElement("div");
+    newDiv.setAttribute("class", "field");
+    div.appendChild(newDiv);
+
+    const newPara = document.createElement("p");
+    newPara.innerText = newValue.value;
+    newDiv.appendChild(newPara);
+
+    const newInput = document.createElement("input");
+    newInput.setAttribute("id", "newField");
+    newDiv.appendChild(newInput);
+
+    newValue.style.borderColor = "lightgray";
+    newValue.value = "";
+
+}
+
 const sendButton = document.getElementById("send");
+let inputs = document.getElementsByTagName("input");
 
-// this the function that will be called when click event is triggered
-function onClickSendButton() {
-  console.log("click on", SendButton);
-}
+let para = document.getElementsByTagName("p");
+let content = para[0];
+console.log(content.innerHTML)
 
-// we attached a function to click event triggered by send button
+let results = "";
+
 sendButton.addEventListener("click", onClickSendButton);
-// Color change input
-const fildNameBlack= document.getElementById("fieldName")
-function changeColor(){
-if (fildNameBlack.value==="")
-return fildNameBlack.style.borderColor= "red"
+
+function onClickSendButton() {
+    let count = 0;
+    for (const input of inputs)
+        if (input !== newValue && input.value === "") {
+
+            input.style.borderColor = "red";
+            count++;
+        }
+        else if (input !== newValue) {
+            const parent = input.parentNode;
+            const paragraph = parent.querySelector("p");
+            results += paragraph.innerText + ":" + input.value + " ";
+        }
+    if (count === 0) {
+        console.log(results);
+        let myBody = document.getElementsByTagName("body");
+        myBody[0].innerHTML = results
+    }
+    else {
+        count = 0;
+        results = "";
+    }
+    return results;
 }
-
-addFiled.addEventListener("click", changeColor)
-
-//function display(){
-
-//  a=document.getElementsByClassName("form-fields");
-
- // b=document.createElement('input')
- // b.setAttribute("type", "text")
- // b.setAttribute("id", "newInput")
-
-  //a.appendChild(b);
-//}
-
-//addField.addEventListener("click", display() );
