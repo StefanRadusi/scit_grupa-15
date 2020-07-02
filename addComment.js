@@ -65,3 +65,9 @@ function formatDate(date) {
 
   return day + "." + (monthIndex + 1) + "." + year;
 }
+
+// const parentDiv = document.getElementsByClassName("comments-container");
+
+// const childDiv = document.getElementsByClassName("comments");
+
+// parentDiv.insertBefore(createComment, commentContainer);
