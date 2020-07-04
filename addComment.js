@@ -23,16 +23,21 @@ document.getElementById("submit").addEventListener("click", function() {
     // "showReadSection" function is present in "utils.js" and have the functionality of hiding the add comment section showing read comment section
     // we call the this function in order to see directly the new added comment after the submit button in clicked
     showReadSection();
+    
 
     // this function is responsible creating the new comment using the values from input and textArea
     createComment(userNameValue, commentAreaValue);
+    if(userNameInputDOM&&commentAreaDOM) {
+      userNameInputDOM.value= "";
+      commentAreaDOM.value="";
+    }
   }
 });
 
 function createComment(userNameValue, commentAreaValue) {
   const commentContainer = document.createElement("div");
   commentContainer.className = "comment";
-  document.getElementById("read-section").appendChild(commentContainer);
+  document.getElementById("read-section").insertBefore(commentContainer, document.getElementById("read-section"). childNodes[0]);
 
   const commentHeader = document.createElement("div");
   commentHeader.className = "comment-header";
