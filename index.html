@@ -1,10 +1,32 @@
 <html>
   <head>
-    <title>This is Git</title>
+    <title>Dom Manipulation Homework</title>
     <link rel="stylesheet" href="style.css" />
   </head>
+  <body id="body">
+    <div class="form-container">
+      <h2>Contact form</h2>
+      <div class="form-fields">
+        <div class="field">
+          <p>Name</p>
+          <input id="name" autocomplete="off" />
+        </div>
+        <div class="field">
+          <p>Surname</p>
+          <input id="surname" autocomplete="off" />
+        </div>
+        <div class="field">
+          <p>Mobile</p>
+          <input id="mobile" autocomplete="off" />
+        </div>
+      </div>
+      <div class="add-field-container">
+        <button id="addFiled">Add Field</button>
+        <input id="fieldName" />
+      </div>
 
-  <body>
+      <button id="send">Send</button>
+    </div>
     <script src="./script.js"></script>
   </body>
 </html>
