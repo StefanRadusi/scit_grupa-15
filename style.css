@@ -11,3 +11,11 @@ body {
 p {
   margin: 0;
 }
+
+.alfa{
+flex-direction: column;
+margin: 9px;
+cursor: pointer;
+}
+
+#meals-initials{display: flex;}

@@ -1,7 +1,10 @@
 // ---- Example: Use data from a server to display different meals
 
-// this is the DOM element were all the the meals are render
 const mealsContainer = document.getElementById("meals-container");
+const mealsInitials=document.getElementById("meals-initials");
+
+
+// this is the DOM element were all the the meals are render
 
 // the DOM element from which we get the value for the parameter of the url used to get data from server
 const input = document.getElementById("meal-name");
@@ -11,7 +14,7 @@ document.getElementById("get-meal").addEventListener("click", function () {
   // before we can get data from server we need to generate the correct url using the value of input
   const url = generateRateUrl(input.value);
 
-  //incase the "generateRateUrl" return nothing we don't have a address so we can't hit the server
+  //in case the "generateRateUrl" return nothing we don't have a address so we can't hit the server
   if (url) {
     // we need to clear the meal container so that new data is shown
     clearMealContainer();
@@ -20,6 +23,8 @@ document.getElementById("get-meal").addEventListener("click", function () {
     hitServer(url);
   }
 });
+
+
 
 // this functions return a generate an url based on the input value that is passed when this function is called
 // in case the "inputValue" parameter is empty then this function will return "undefined"
