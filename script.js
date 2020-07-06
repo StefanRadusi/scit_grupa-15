@@ -6,6 +6,12 @@ const sendButton = document.getElementById("send");
 // this the function that will be called when click event is triggered
 function onClickSendButton() {
   console.log("click on", sendButton);
+
+const allFields = document.getElementsByClassName("field")
+const getFields = allFields.value;
+ if(getFields === ""){
+   getFields.style.borderColor = "red";
+ }
 }
 
 // we attached a function to click event triggered by send button
@@ -26,29 +32,20 @@ function onClickAddButton() {
    const nameValue = document.getElementById("fieldName").value;
    p.innerText = nameValue;
    div.appendChild(p);
-
+   
    const newInput = document.createElement("input");
    newInput.id = ("{fieldName}");
    div.appendChild(newInput);
-
-  document.getElementById("fields").appendChild(div);
    
+  document.getElementById("fields").appendChild(div);  
+
+  const getInput = document.getElementById("fieldName");
+  const getNewInput = getInput.value;
+     if (getNewInput === ""){
+     getInput.style.borderColor = "red";
+    }
+
  }
 
 addButton.addEventListener("click", onClickAddButton);
 
-let getNewField = document.getElementById('{fieldName}').value;
-
- if(newInput.length === ""){
-   newInput.style.border = "1px solid red";
- }else{
-   newInput.style.border = "1px solid lightgray";
- }
-
-let allFields = document.getElementsByClassName('form-fields').value;
- 
- if(allFields.length === 0){
-   allFields.style.border = "1px solid red";
- }else {
-   allFields.style.border = "1px solid lightgray";
- }
