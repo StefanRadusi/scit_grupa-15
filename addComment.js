@@ -63,8 +63,6 @@ function createComment(userNameValue, commentAreaValue) {
   document.getElementById("comment-area").value ="";
 }
 
-
-
 function formatDate(date) {
   var day = date.getDate();
   var monthIndex = date.getMonth();
