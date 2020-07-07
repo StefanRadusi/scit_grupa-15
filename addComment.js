@@ -30,9 +30,11 @@ document.getElementById("submit").addEventListener("click", function() {
 });
 
 function createComment(userNameValue, commentAreaValue) {
+  const parent = document.getElementById("read-section")
   const commentContainer = document.createElement("div");
   commentContainer.className = "comment";
   document.getElementById("read-section").appendChild(commentContainer);
+  parent.insertBefore(commentContainer, parent.childNodes[0] )
 
   const commentHeader = document.createElement("div");
   commentHeader.className = "comment-header";
@@ -56,7 +58,12 @@ function createComment(userNameValue, commentAreaValue) {
   commentContent.className = "comment-content";
   commentContent.innerText = commentAreaValue;
   commentContainer.appendChild(commentContent);
+
+  document.getElementById("user-name").value ="";
+  document.getElementById("comment-area").value ="";
 }
+
+
 
 function formatDate(date) {
   var day = date.getDate();
@@ -65,3 +72,6 @@ function formatDate(date) {
 
   return day + "." + (monthIndex + 1) + "." + year;
 }
+
+
+
