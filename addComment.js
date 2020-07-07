@@ -26,13 +26,13 @@ document.getElementById("submit").addEventListener("click", function() {
 
     // this function is responsible creating the new comment using the values from input and textArea
     createComment(userNameValue, commentAreaValue);
-  }
+    }
 });
 
 function createComment(userNameValue, commentAreaValue) {
   const commentContainer = document.createElement("div");
   commentContainer.className = "comment";
-  document.getElementById("read-section").appendChild(commentContainer);
+  document.getElementById("read-section").insertBefore(commentContainer, document.getElementById("read-section").childNodes[0]);;
 
   const commentHeader = document.createElement("div");
   commentHeader.className = "comment-header";
@@ -65,9 +65,3 @@ function formatDate(date) {
 
   return day + "." + (monthIndex + 1) + "." + year;
 }
-
-// const parentDiv = document.getElementsByClassName("comments-container");
-
-// const childDiv = document.getElementsByClassName("comments");
-
-// parentDiv.insertBefore(createComment, commentContainer);
