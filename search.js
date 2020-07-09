@@ -1,6 +1,6 @@
 // we react to keydown event on search input
 // we do this because we don't have a "enter" event in browser
-document.getElementById("search").addEventListener("keydown", function(event) {
+document.getElementById("search").addEventListener("keydown", function (event) {
   // all the function that are called when a event is trigger have as the first parameter the event object
   // because the e a keyboard event the object has a key named "key" which contains the actual keyboard name
   // the "keydown" event is trigger every time a key is pressed but whe need to make actions only when "Enter" key is pressed, thus the "if" statement

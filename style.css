@@ -85,7 +85,7 @@ body {
 }
 
 .selected {
-  background: grey;
+  background: grey; 
   color: white;
 }
 
@@ -135,3 +135,15 @@ body {
   border-radius: 5px;
   margin-bottom: 10px;
 }
+
+
+
+.article-short-description {
+  display : none;
+}
+
+.article-short-description-set {
+  display: block;
+}
+
+
