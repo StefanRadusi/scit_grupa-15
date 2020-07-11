@@ -1,59 +1,184 @@
-html,
 body {
-  width: 100%;
-  height: 100%;
+  margin: 0;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+h1,
+h3,
+p {
+  margin: 0;
 }
 
-input {
-  height: 25px;
-  outline: none;
+h1 a {
+  text-decoration: none;
+  color: black;
+}
+
+.header {
+  background: lightgray;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding: 0px 10px;
+}
+
+.app-home-icon {
+  font-size: 25px;
+  margin-right: 10px;
+  color: grey;
+}
+
+.about-button {
+  margin-top: 2px;
+  background: grey;
+  color: white;
+  padding: 4px;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+#searchInput {
+  margin-left: auto;
+  border: 1px solid grey;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.article-header {
+  display: flex;
+}
+
+.article-date {
+  margin-left: auto;
+  align-self: flex-end;
+}
+
+.app-body {
+  padding: 20px;
+}
+
+.article-header {
+  margin-bottom: 10px;
+}
+
+.article {
+  margin-bottom: 20px;
+  border-bottom: 1px solid lightgrey;
+  padding-bottom: 20px;
+}
+
+.article:last-child {
+  border-bottom: none;
+}
+
+.article-description {
+  margin-bottom: 20px;
+}
+
+.disabled {
+  opacity: 0.5;
+}
+
+/*continuarea din cursul 14 */
+
+
+.comment-buttons {
+  display: flex;
+}
+.read-button {
+  margin-right: 0;
+  width: 70px;
+  background-color: lightgrey;
+  border-radius: 2px;
+}
+
+.add-button {
+  margin-left: 0;
+  width: 70px;
+  background-color: lightgrey;
+  border-radius: 2px;
+}
+
+/* .article-comment :first-child {
+  padding-top: 20px;
+} */
+.comment {
   border: 1px solid lightgray;
-  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
 }
 
-h1{
-  margin-left: 30px;  
-}
-
-.input-box {
+.comments-buttons {
   display: flex;
-  align-items: center;
+  margin-bottom: 5px;
 }
 
-.input-box p {
-  width: 100px;
-  font-size: 14px;
+.comments-buttons button {
+  font-size: 20px;
+  width: 80px;
+  outline: none;
 }
 
-.add-button-box {
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-  padding-top: 8px;
-  padding-bottom: 8px;
+.selected {
+  background: grey;
+  color: white;
 }
 
+/* we need position relative so the if we position absolute the child it will take the position correctly */
+.comments {
+  position: relative;
+}
 
-#addButton {
-  margin-right: 25px;
+/* we position absolute the 2 containers so that the overlap*/
+.comments-read,
+.comments-edit {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  /* as default we hide them with display none */
+  display: none;
+}
+
+.comments-edit {
+  width: 300px;
+  height: 500px;
+
+  flex-direction: column;
+}
+
+/* when this class is added the read comments section is visible */
+.comments-selected-read {
+  display: block;
+}
+
+/* when this class is added the edit comments section is visible */
+.comments-selected-edit {
+  display: flex;
+}
+
+#user-name {
+  padding: 5px;
   border-radius: 5px;
+  margin-bottom: 10px;
 }
 
-#addButton:hover{
-    background-color: aqua;
-}
-  
-#sendButton {
-  float: right;
-  margin-top: 10px;
+#comment-area {
+  height: 200px;
   border-radius: 5px;
+  margin-bottom: 10px;
 }
-#sendButton:hover{
-    background-color: aqua;
+
+
+.desc {
+  font-size: 15px;
+  margin-left: 15px;
+}
+
+
+.article-short-description {
+  display: none;
 }
