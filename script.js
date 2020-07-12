@@ -1,6 +1,6 @@
 // ---- Example: Use data from a server to display different meals
 
-// this is the DOM element were all the the meals are render
+// this is the DOM element where all  the meals are render
 const mealsContainer = document.getElementById("meals-container");
 
 // the DOM element from which we get the value for the parameter of the url used to get data from server
@@ -53,20 +53,59 @@ function hitServer(url) {
 function renderMeals(meals) {
   // before adding DOM elements to mealsContainer we want to use "innerHTML" attribute to overwrite the current content so that is empty before we start adding new meals
   mealsContainer.innerHTML = "";
-  for (const meal of meals) {
-    // please check in the console the structure of the meal object so it will be easier to understand how the data is accessed and used to create the new DOM elements for the meal
-    console.log(meal);
-    const mealContainer = document.createElement("div");
-    mealContainer.style.marginBottom = "20px";
+  if (!meals) {
+    mealsContainer.innerHTML = "No recipes here."
+  } 
+  
+  else {
+    for (const meal of meals) {
+      // please check in the console the structure of the meal object so it will be easier to understand how the data is accessed and used to create the new DOM elements for the meal
+      console.log(meal);
+      const mealContainer = document.createElement("div");
+      mealContainer.style.marginBottom = "20px";
 
-    const mealTitle = document.createElement("h3");
-    mealTitle.innerText = meal.strMeal;
-    mealContainer.appendChild(mealTitle);
+      const mealTitle = document.createElement("h3");
+      mealTitle.innerText = meal.strMeal;
+      mealContainer.appendChild(mealTitle);
 
-    const mealContent = document.createElement("p");
-    mealContent.innerText = meal.strInstructions;
-    mealContainer.appendChild(mealContent);
+      const mealContent = document.createElement("p");
+      mealContent.innerText = meal.strInstructions;
+      mealContainer.appendChild(mealContent);
 
-    mealsContainer.appendChild(mealContainer);
+      mealsContainer.appendChild(mealContainer);
+    }
   }
 }
+
+function genCharArray(charA, charZ) {
+    let a = [];
+    let i = charA.charCodeAt(0);
+    let j = charZ.charCodeAt(0);
+    for (; i <= j; ++i) {
+      a.push(String.fromCharCode(i));
+    }
+    return a;
+}
+
+let letters = genCharArray('A', 'Z');
+for (const char of letters) {
+  let element = document.createElement("p");
+  element.innerText = char;
+  document.getElementById("letter-container").appendChild(element);
+  element.classList.add("new-element");
+  element.addEventListener("click", function () {
+      let url = generateURL(char);
+      if (url) {
+        clearMealContainer();
+        hitServer(url);
+      } else {
+          debugger;
+      }
+  })
+}
+
+let generateURL = letter => {
+  if (letter) {
+    return `https://www.themealdb.com/api/json/v1/1/search.php?f=${letter}`;
+  }
+};
