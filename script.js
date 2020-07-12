@@ -70,3 +70,57 @@ function renderMeals(meals) {
     mealsContainer.appendChild(mealContainer);
   }
 }
+
+// ///HOMEWORK
+
+
+document.getElementById("a").addEventListener("click", function () {
+  const url1 = generateNewUrl("a");
+  if (url1) {
+    clearMealContainer();
+    hitServer(url1);
+  }
+  console.log(url1);
+});
+
+function generateNewUrl(newValue) {
+  if (newValue) {
+    return `https://www.themealdb.com/api/json/v1/1/search.php?f=${newValue}`;
+}
+};
+
+//// Generate alphabets froam A to Z
+
+function generateAlphabet() {
+  let alphabets = [];
+  let start = 'A'.charCodeAt(0);
+  let last  = 'Z'.charCodeAt(0);
+  for (let i = start; i <= last; ++i) {
+    alphabets.push(String.fromCharCode(i));
+  }
+  return alphabets.join('');
+};
+
+//// Create a new p for every letter
+//// render the alphabet in page and add event on every new paragraph to show the corrects meals by first letter
+
+const letters = generateAlphabet('A', 'Z');
+for (const character of letters) {
+  const p = document.createElement("p");
+  document.getElementById("letters").appendChild(p);
+  p.classList.add("letters-style");
+  p.innerText = character;
+  p.addEventListener("click", function () {
+    const url2 = generateNewUrl1(character);
+    if (url2) {
+      clearMealContainer();
+      hitServer(url2);
+    }
+  })
+};
+
+function generateNewUrl1(newValue1) {
+  if (newValue1) {
+    return `https://www.themealdb.com/api/json/v1/1/search.php?f=${newValue1}`;
+}
+};

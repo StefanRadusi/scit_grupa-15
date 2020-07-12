@@ -9,5 +9,17 @@ body {
 }
 
 p {
-  margin: 0;
+margin: 0;
+}
+
+#letters{
+display: flex;
+margin: 5px;
+}
+
+#letters p{
+display: inline-block;
+margin: 5px;
+background-color: white;
+border-color: white;
 }
