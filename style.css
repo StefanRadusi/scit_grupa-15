@@ -1,3 +1,11 @@
+body {
+  font-family: sans-serif;
+}
+
+.letters-container {
+  display: flex;
+}
+
 p {
-  color: red;
+  margin: 10px;
 }
