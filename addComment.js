@@ -27,6 +27,11 @@ document.getElementById("submit").addEventListener("click", function() {
     // this function is responsible creating the new comment using the values from input and textArea
     createComment(userNameValue, commentAreaValue);
   }
+  function eraseText() {
+    document.getElementById("user-name").value = "";
+    document.getElementById("comment-area").value = "";
+  }
+  eraseText()
 });
 
 function createComment(userNameValue, commentAreaValue) {
@@ -56,6 +61,10 @@ function createComment(userNameValue, commentAreaValue) {
   commentContent.className = "comment-content";
   commentContent.innerText = commentAreaValue;
   commentContainer.appendChild(commentContent);
+
+  const parent= document.getElementById("read-section");
+  parent.insertBefore(commentContainer, parent.childNodes[0]);
+
 }
 
 function formatDate(date) {
