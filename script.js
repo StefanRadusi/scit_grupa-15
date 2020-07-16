@@ -70,3 +70,82 @@ function renderMeals(meals) {
     mealsContainer.appendChild(mealContainer);
   }
 }
+
+  document.getElementById("letter-a").addEventListener("click", function(){
+    hitServer("https://www.themealdb.com/api/json/v1/1/search.php?f=a")
+  })
+  document.getElementById("letter-b").addEventListener("click", function(){
+    hitServer("https://www.themealdb.com/api/json/v1/1/search.php?f=b")
+  })
+  document.getElementById("letter-c").addEventListener("click", function(){
+    hitServer("https://www.themealdb.com/api/json/v1/1/search.php?f=c")
+  })
+  document.getElementById("letter-d").addEventListener("click", function(){
+    hitServer("https://www.themealdb.com/api/json/v1/1/search.php?f=d")
+  })
+  document.getElementById("letter-e").addEventListener("click", function(){
+    hitServer("https://www.themealdb.com/api/json/v1/1/search.php?f=e")
+  })
+  document.getElementById("letter-f").addEventListener("click", function(){
+    hitServer("https://www.themealdb.com/api/json/v1/1/search.php?f=f")
+  })
+  document.getElementById("letter-g").addEventListener("click", function(){
+    hitServer("https://www.themealdb.com/api/json/v1/1/search.php?f=g")
+  })
+  document.getElementById("letter-h").addEventListener("click", function(){
+    hitServer("https://www.themealdb.com/api/json/v1/1/search.php?f=h")
+  })
+  document.getElementById("letter-i").addEventListener("click", function(){
+    hitServer("https://www.themealdb.com/api/json/v1/1/search.php?f=i")
+  })
+  document.getElementById("letter-j").addEventListener("click", function(){
+    hitServer("https://www.themealdb.com/api/json/v1/1/search.php?f=j")
+  })
+  document.getElementById("letter-k").addEventListener("click", function(){
+    hitServer("https://www.themealdb.com/api/json/v1/1/search.php?f=k")
+  })
+  document.getElementById("letter-l").addEventListener("click", function(){
+    hitServer("https://www.themealdb.com/api/json/v1/1/search.php?f=l")
+  })
+  document.getElementById("letter-m").addEventListener("click", function(){
+    hitServer("https://www.themealdb.com/api/json/v1/1/search.php?f=m")
+  })
+  document.getElementById("letter-n").addEventListener("click", function(){
+    hitServer("https://www.themealdb.com/api/json/v1/1/search.php?f=n")
+  })
+  document.getElementById("letter-o").addEventListener("click", function(){
+    hitServer("https://www.themealdb.com/api/json/v1/1/search.php?f=o")
+  })
+  document.getElementById("letter-p").addEventListener("click", function(){
+    hitServer("https://www.themealdb.com/api/json/v1/1/search.php?f=p")
+  })
+  document.getElementById("letter-q").addEventListener("click", function(){
+    hitServer("https://www.themealdb.com/api/json/v1/1/search.php?f=q")
+  })
+  document.getElementById("letter-r").addEventListener("click", function(){
+    hitServer("https://www.themealdb.com/api/json/v1/1/search.php?f=r")
+  })
+  document.getElementById("letter-s").addEventListener("click", function(){
+    hitServer("https://www.themealdb.com/api/json/v1/1/search.php?f=s")
+  })
+  document.getElementById("letter-t").addEventListener("click", function(){
+    hitServer("https://www.themealdb.com/api/json/v1/1/search.php?f=t")
+  })
+  document.getElementById("letter-u").addEventListener("click", function(){
+    hitServer("https://www.themealdb.com/api/json/v1/1/search.php?f=u")
+  })
+  document.getElementById("letter-v").addEventListener("click", function(){
+    hitServer("https://www.themealdb.com/api/json/v1/1/search.php?f=v")
+  })
+  document.getElementById("letter-w").addEventListener("click", function(){
+    hitServer("https://www.themealdb.com/api/json/v1/1/search.php?f=w")
+  })
+  document.getElementById("letter-x").addEventListener("click", function(){
+    hitServer("https://www.themealdb.com/api/json/v1/1/search.php?f=x")
+  })
+  document.getElementById("letter-y").addEventListener("click", function(){
+    hitServer("https://www.themealdb.com/api/json/v1/1/search.php?f=y")
+  })
+  document.getElementById("letter-z").addEventListener("click", function(){
+    hitServer("https://www.themealdb.com/api/json/v1/1/search.php?f=z")
+  })

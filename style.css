@@ -11,3 +11,9 @@ body {
 p {
   margin: 0;
 }
+
+.all-letters {
+  display: inline-flex;
+  flex-direction: row;
+  margin: 10px;
+}
