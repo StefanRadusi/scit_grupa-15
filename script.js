@@ -70,3 +70,31 @@ function renderMeals(meals) {
     mealsContainer.appendChild(mealContainer);
   }
 }
+    function genCharArray(charA, charZ) {
+      let a = [], i = charA.charCodeAt(0), j = charZ.charCodeAt(0);
+      for (; i <= j; ++i) {
+        a.push(String.fromCharCode(i));
+      }
+      return a;
+    }
+    
+    const letters = genCharArray('A', 'Z');
+    for (const char of letters) {
+      const element = document.createElement("p");
+      element.innerText = char;
+      document.getElementById("letters-container").appendChild(element);
+      element.classList.add("letter-style");
+      element.addEventListener("click", function () {
+        const url = generateURL(char);
+        if (url) {
+          clearMealContainer();
+          hitServer(url);
+        }
+      })
+    }
+    
+    function generateURL(letter) {
+      if (letter) {
+        return `https://www.themealdb.com/api/json/v1/1/search.php?f=${letter}`;
+      }
+    }
