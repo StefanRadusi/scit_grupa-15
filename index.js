@@ -50,9 +50,16 @@ class Game {
 
         if (this.displayLetters.hasLetter(value)) {
           this.displayLetters.displayLetter(value);
+
+          if (this.checkIfWin()) {
+            this.showWiningState();
+          }
         } else {
           this.lives--;
           this.updateLives();
+          if (checkIfLoose()) {
+            this.showLoosingState();
+          }
         }
 
         this.input.value = "";
@@ -60,6 +67,41 @@ class Game {
     } else if (this.input.value.length !== 0) {
       this.input.value = event.key;
     }
+  }
+
+  checkIfLoose() {
+    if (this.lives === 0) true;
+
+    return false;
+  }
+
+  showLoosingState() {
+    // similar with "showWiningState"
+  }
+
+  showWiningState() {
+    this.livesSpan.innerText = "You won";
+    this.input.disabled = true;
+  }
+
+  checkIfWin() {
+    // true or false
+    // this.displayLetters.letters (is an array)
+    // for trough this.displayLetters.letters , check if htmlRef.innerText === "_" then false
+  }
+
+  cleanLetters() {
+    this.displayLetters.lettersContainer.remove();
+  }
+
+  // this must be used in reset button
+  resetTheGame() {
+    this.input.disabled = false;
+    this.chooseRandomWord();
+    this.lives = 5;
+    this.updateLives();
+    this.cleanLetters();
+    this.displayLetters();
   }
 }
 
