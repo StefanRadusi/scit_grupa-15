@@ -6,6 +6,7 @@ class Game {
     this.renderTitle();
     this.renderLetters();
     this.renderUserInput();
+    this.resetButton();
   }
 
   chooseRandomWord() {
@@ -59,7 +60,8 @@ class Game {
         } else {
           this.lives--;
           this.updateLives();
-          if (checkIfLoose()) {
+          console.log(this.lives);
+          if (this.checkIfLoose()) {
             this.showLoosingState();
           }
         }
@@ -72,28 +74,39 @@ class Game {
   }
 
   checkIfLoose() {
-    if (this.lives === 0) true;
+    if (this.lives === 0) return true;
 
     return false;
   }
 
   showLoosingState() {
-    // similar with "showWiningState"
+    this.livesSpan.innerText = " - You lost";
+    this.input.disabled = true;
   }
 
   showWiningState() {
-    this.livesSpan.innerText = "You won";
+    this.livesSpan.innerText = " - You won";
     this.input.disabled = true;
   }
 
   checkIfWin() {
-    // true or false
-    // this.displayLetters.letters (is an array)
-    // for trough this.displayLetters.letters , check if htmlRef.innerText === "_" then false
+    for (const letter of this.displayLetters.letters) {
+      if (letter.htmlRef.innerText === "_") return false
+    }
+    return true
   }
 
   cleanLetters() {
     this.displayLetters.lettersContainer.remove();
+  }
+
+  resetButton(){
+    this.Button = document.createElement('button');
+    this.Button.innerText = "Reset Game"
+
+    this.Button.addEventListener('click',this.resetTheGame.bind(this))
+
+    document.body.appendChild(this.Button)
   }
 
   // this must be used in reset button
@@ -103,7 +116,7 @@ class Game {
     this.lives = 5;
     this.updateLives();
     this.cleanLetters();
-    this.displayLetters();
+    this.renderLetters();
   }
 }
 
@@ -128,7 +141,10 @@ class LettersDisplay {
       this.lettersContainer.appendChild(letterHtml);
     }
 
-    document.body.appendChild(this.lettersContainer);
+    ///get the second child of body and append to it the letters-container
+    //the first child is the <script...>
+    const FirstChildInBody = document.body.children[1];
+    FirstChildInBody.appendChild(this.lettersContainer);
   }
 
   hasLetter(letter) {

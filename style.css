@@ -4,8 +4,15 @@ body {
 
 .letters-container {
   display: flex;
+  font-size: large;
+    font-weight: normal;
 }
 
 p {
   margin: 10px;
+}
+
+button{
+  display: flex;
+  margin-top: 10px;
 }
