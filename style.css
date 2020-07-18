@@ -5,7 +5,7 @@ body {
 .letters-container {
   display: flex;
   font-size: large;
-    font-weight: normal;
+  font-weight: normal;
 }
 
 p {

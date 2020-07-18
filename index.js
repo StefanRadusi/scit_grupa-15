@@ -141,7 +141,7 @@ class LettersDisplay {
       this.lettersContainer.appendChild(letterHtml);
     }
 
-    ///get the second child of body and append to it the letters-container
+    //get the second child of body and append to it the letters-container
     //the first child is the <script...>
     const FirstChildInBody = document.body.children[1];
     FirstChildInBody.appendChild(this.lettersContainer);
