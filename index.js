@@ -6,6 +6,7 @@ class Game {
     this.renderTitle();
     this.renderLetters();
     this.renderUserInput();
+    this.gameReseter();
   }
 
   chooseRandomWord() {
@@ -43,6 +44,15 @@ class Game {
     this.input.addEventListener("keyup", this.reactToUserInput.bind(this));
   }
 
+  gameReseter() {
+    this.resetButton = document.createElement("button");
+    this.resetButton.innerText = "Reset";
+    this.resetButton.classList.add("reset-button");
+    document.body.appendChild(this.resetButton);
+
+    this.resetButton.addEventListener("click", this.resetTheGame.bind(this));
+  }
+
   reactToUserInput(event) {
     if (this.input.value.length === 1) {
       if (event.key === "Enter") {
@@ -57,11 +67,10 @@ class Game {
         } else {
           this.lives--;
           this.updateLives();
-          if (checkIfLoose()) {
-            this.showLoosingState();
+          if (this.checkIfLose()) {
+            this.showLosingState();
           }
         }
-
         this.input.value = "";
       }
     } else if (this.input.value.length !== 0) {
@@ -69,39 +78,54 @@ class Game {
     }
   }
 
-  checkIfLoose() {
-    if (this.lives === 0) true;
+  checkIfLose() {
+    if (this.lives === 0) {
+      return true;
+    }
 
     return false;
   }
 
-  showLoosingState() {
-    // similar with "showWiningState"
+  showLosingState() {
+    this.livesSpan.innerText = " -You lose";
+    this.input.disabled = true;
+
   }
 
   showWiningState() {
-    this.livesSpan.innerText = "You won";
+    this.livesSpan.innerText = " -You won";
     this.input.disabled = true;
   }
 
   checkIfWin() {
+    for (const eachLetter of this.displayLetters.letters) {
+      if (eachLetter.htmlRef.innerText === "_") {
+        return false;
+      }
+    }
+    return true;
+
     // true or false
     // this.displayLetters.letters (is an array)
     // for trough this.displayLetters.letters , check if htmlRef.innerText === "_" then false
   }
 
   cleanLetters() {
-    this.displayLetters.lettersContainer.remove();
+    this.displayLetters.lettersContainer.innerHTML = "";
   }
 
-  // this must be used in reset button
   resetTheGame() {
     this.input.disabled = false;
     this.chooseRandomWord();
     this.lives = 5;
     this.updateLives();
     this.cleanLetters();
-    this.displayLetters();
+    this.resetLetters();
+  }
+
+  resetLetters() {
+    this.displayLetters.word = this.currentWord;
+    this.displayLetters.createLettersHtml();
   }
 }
 
@@ -115,18 +139,7 @@ class LettersDisplay {
   initialDisplay() {
     this.lettersContainer = document.createElement("div");
     this.lettersContainer.classList.add("letters-container");
-    const letters = this.word.split(""); //const letters e array
-    this.letters = []; // this.letters e o noua entitate, diferita fata de const letters 
-    for (const letter of letters) {  // letters DIFERIT de this.letters !!!!!!!!!!!!!!!
-      const letterHtml = document.createElement("p");
-      letterHtml.innerText = "_";
-      this.letters.push({
-        htmlRef: letterHtml,
-        value: letter,
-      });
-      this.lettersContainer.appendChild(letterHtml);
-    }
-
+    this.createLettersHtml();
     /*
     this.letters = [
       {
@@ -145,6 +158,20 @@ class LettersDisplay {
     */
 
     document.body.appendChild(this.lettersContainer);
+  }
+
+  createLettersHtml() {
+    const letters = this.word.split(""); //const letters e array
+    this.letters = []; // this.letters e o noua entitate, diferita fata de const letters 
+    for (const letter of letters) {  // letters DIFERIT de this.letters !!!!!!!!!!!!!!!
+      const letterHtml = document.createElement("p");
+      letterHtml.innerText = "_";
+      this.letters.push({
+        htmlRef: letterHtml,
+        value: letter,
+      });
+      this.lettersContainer.appendChild(letterHtml);
+    }
   }
 
   hasLetter(letter) { // const value = this.input.value e letter adica ce litera adauga user-ul in input
