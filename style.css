@@ -1,3 +1,19 @@
-p {
-  color: red;
+body {
+  font-family: sans-serif;
+  display: flex;
+  align-items: center;
+}
+
+.carousel-imgs-container {
+  display: flex;
+}
+
+img {
+  width: 100px;
+  margin: 20px;
+}
+
+button {
+  height: 30px;
+  width: 30px;
 }
