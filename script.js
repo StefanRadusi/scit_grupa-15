@@ -54,7 +54,79 @@ function renderMeals(meals) {
   // before adding DOM elements to mealsContainer we want to use "innerHTML" attribute to overwrite the current content so that is empty before we start adding new meals
   mealsContainer.innerHTML = "";
   for (const meal of meals) {
-    // please check in the console the structure of the meal object so it will be easier to understand how the data is accessed and used to create the new DOM elements for the meal
+    // please check in the console the structure of the meal object so it will be easier to understand how the data is accessed and used
+    // to create the new DOM elements for the meal
+    console.log(meal);
+    const mealContainer = document.createElement("div");
+    mealContainer.style.marginBottom = "20px";
+
+    const mealTitle = document.createElement("h3");
+    mealTitle.innerText = meal.strMeal;
+    mealContainer.appendChild(mealTitle);
+
+    const mealContent = document.createElement("p");
+    mealContent.innerText = meal.strInstructions;
+    mealContainer.appendChild(mealContent);
+
+    mealsContainer.appendChild(mealContainer);
+  }
+}
+
+//Homework Implementation
+
+function genCharArray(charA, charZ) {
+  let a = [], i = charA.charCodeAt(0), j = charZ.charCodeAt(0);
+  for (; i <= j; i++) {
+      a.push(String.fromCharCode(i));
+  }
+  return a;
+}
+
+const mealsLettersContainer = document.getElementById('meals-letters')
+function generateLetters() 
+{
+    for (const letter of genCharArray('A','Z')) 
+    {
+      // const letter = String.fromCharCode(i);
+      const letterParagraph = document.createElement("p");
+      letterParagraph.innerText = letter;
+      mealsLettersContainer.appendChild(letterParagraph);
+      letterParagraph.classList.add("letter")
+      letterParagraph.addEventListener("click",function(){
+
+        const URL = generateRateLink(letter.toLowerCase());
+        if (URL)
+        { 
+            clearMealContainer();
+        
+            getMeal(URL)}
+      
+        });
+    }
+}
+      generateLetters();    
+
+    function generateRateLink(letter){
+        if (letter) {
+            return `https://www.themealdb.com/api/json/v1/1/search.php?f=${letter}`;
+          }
+
+    };
+
+    function getMeal(URL){
+        fetch(URL)
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (json) {
+          renderLettersMeals(json.meals);
+        });
+
+    };
+
+   function renderLettersMeals(meals){
+    mealsContainer.innerHTML = "";
+   for (const meal of meals) {
     console.log(meal);
     const mealContainer = document.createElement("div");
     mealContainer.style.marginBottom = "20px";

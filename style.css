@@ -11,3 +11,14 @@ body {
 p {
   margin: 0;
 }
+
+#meals-letters{
+  display: flex;
+  padding-top: 10px;
+}
+
+.letter{
+flex-direction: column;
+margin-right: 9px;
+cursor: pointer;
+}
