@@ -32,6 +32,7 @@ document.getElementById("submit").addEventListener("click", function() {
     document.getElementById("comment-area").value = "";
   }
   eraseText()
+  
 });
 
 function createComment(userNameValue, commentAreaValue) {
