@@ -1,11 +1,25 @@
 body {
   font-family: sans-serif;
 }
-
+  
 .letters-container {
-  display: flex;
+  display: block;
 }
-
+  
 p {
   margin: 10px;
+  display: inline-block;
+}
+
+.reset-button {
+  display: block;
+  margin: 10px;
+}
+
+.user-input{
+  display: block;
+}
+
+.reset-button:hover {
+  background-color: grey;
 }
