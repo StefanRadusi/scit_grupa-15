@@ -9,3 +9,24 @@ body {
 p {
   margin: 10px;
 }
+
+.button-reset {
+  display: flex;
+  margin-top: 15px;
+  padding: 5px;
+  background-color: lightgrey ;
+  border: 1px solid black;
+  /* border-radius: 5px; */
+
+}
+
+.button-reset:hover {
+ color: white;
+ background-color: orange;
+ padding: 8px;
+ /* font-size: 17px; */
+ cursor: pointer;
+ transition: ease-in-out 300ms;
+ border: 2px solid rgb(204, 110, 3);
+ border-radius: 5px;
+}
