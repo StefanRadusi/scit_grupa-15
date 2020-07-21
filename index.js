@@ -6,6 +6,7 @@ class Game {
     this.renderTitle();
     this.renderLetters();
     this.renderUserInput();
+    this.gameReset();
   }
 
   chooseRandomWord() {
@@ -15,12 +16,13 @@ class Game {
   }
 
   renderTitle() {
-    const title = document.createElement("h2");
-    title.innerText = "Hangman Game";
+      let title;
+      title = document.createElement("h2");
+      title.innerText = "Hangman Game";
 
-    this.renderInitialLives(title);
+      this.renderInitialLives(title);
 
-    document.body.appendChild(title);
+      document.body.appendChild(title);
   }
 
   renderInitialLives(title) {
@@ -59,7 +61,8 @@ class Game {
         } else {
           this.lives--;
           this.updateLives();
-          if (checkIfLoose()) {
+          console.log(this.lives);
+          if (this.checkIfLoose()) {
             this.showLoosingState();
           }
         }
@@ -72,28 +75,39 @@ class Game {
   }
 
   checkIfLoose() {
-    if (this.lives === 0) true;
-
-    return false;
+      return !!(this.lives === 0);
   }
 
   showLoosingState() {
-    // similar with "showWiningState"
+    this.livesSpan.innerText = " - You lost";
+    this.input.disabled = true;
   }
 
   showWiningState() {
-    this.livesSpan.innerText = "You won";
+    this.livesSpan.innerText = " - You won";
     this.input.disabled = true;
   }
 
   checkIfWin() {
-    // true or false
-    // this.displayLetters.letters (is an array)
-    // for trough this.displayLetters.letters , check if htmlRef.innerText === "_" then false
+    for (let letter of this.displayLetters.letters) {
+      if (letter.htmlRef.innerText !== "_") {
+          debugger;
+      } else
+          return false;
+    }
+    return true
   }
 
   cleanLetters() {
     this.displayLetters.lettersContainer.remove();
+  }
+
+  gameReset(){
+    this.buttonReset = document.createElement('button');
+    this.buttonReset.innerText = `Reset The Game`
+    this.buttonReset.classList.add('button-r' + 'eset');
+    this.buttonReset.addEventListener('c' + 'lick',this.resetTheGame.bind(this))
+    document.body.appendChild(this.buttonReset)
   }
 
   // this must be used in reset button
@@ -103,7 +117,7 @@ class Game {
     this.lives = 5;
     this.updateLives();
     this.cleanLetters();
-    this.displayLetters();
+    this.renderLetters();
   }
 }
 
@@ -114,27 +128,34 @@ class LettersDisplay {
   }
 
   initialDisplay() {
-    this.lettersContainer = document.createElement("div");
-    this.lettersContainer.classList.add("letters-container");
-    const letters = this.word.split("");
-    this.letters = [];
-    for (const letter of letters) {
-      const letterHtml = document.createElement("p");
-      letterHtml.innerText = "_";
-      this.letters.push({
-        htmlRef: letterHtml,
-        value: letter,
-      });
-      this.lettersContainer.appendChild(letterHtml);
-    }
+      this.lettersContainer = document.createElement("div");
+      this.lettersContainer.classList.add("letters-container");
+      let letters;
+      letters = this.word.split("");
+      this.letters = [];
+      for (let letter of letters) {
+        const letterHtml = document.createElement("p");
+        letterHtml.innerText = "_";
+        this.letters.push({
+          htmlRef: letterHtml,
+          value: letter,
+        });
+        this.lettersContainer.appendChild(letterHtml);
+      }
 
-    document.body.appendChild(this.lettersContainer);
+      //get the second child of body and append to it the letters-container
+      //the first child is the <script...>
+      let FirstChildInBody;
+      FirstChildInBody = document.body.children[1];
+      FirstChildInBody.appendChild(this.lettersContainer);
   }
 
   hasLetter(letter) {
-    for (const objectLetter of this.letters) {
+    for (let objectLetter of this.letters) {
       if (objectLetter.value === letter) {
         return true;
+      } else {
+          debugger;
       }
     }
 
@@ -145,6 +166,8 @@ class LettersDisplay {
     for (const objectLetter of this.letters) {
       if (objectLetter.value === letter) {
         objectLetter.htmlRef.innerText = letter;
+      } else {
+          debugger;
       }
     }
   }
