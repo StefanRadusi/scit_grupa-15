@@ -78,11 +78,12 @@ class Game {
   }
 
   showLoosingState() {
-    // similar with "showWiningState"
+    this.livesSpan.innerText = " - You lose";
+    this.input.disabled = true;
   }
 
   showWiningState() {
-    this.livesSpan.innerText = "You won";
+    this.livesSpan.innerText = " - You won";
     this.input.disabled = true;
   }
 
@@ -90,12 +91,25 @@ class Game {
     // true or false
     // this.displayLetters.letters (is an array)
     // for trough this.displayLetters.letters , check if htmlRef.innerText === "_" then false
+    for (const letter of this.displayLetters.letters) {
+      if (letter.htmlRef.innerText === "_") { 
+      return false;
+    } else {
+      return true;
+    }
   }
+}
 
   cleanLetters() {
     this.displayLetters.lettersContainer.remove();
   }
 
+  resetButton() {
+    this.Button = document.createElement('button');
+    this.Button.innerText = "Reset the Game";
+    this.Button.addEventListener('click', this.resetTheGame.bind(this));
+    document.body.appendChild(this.Button)
+  }
   // this must be used in reset button
   resetTheGame() {
     this.input.disabled = false;
