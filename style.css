@@ -9,3 +9,8 @@ body {
 p {
   margin: 10px;
 }
+
+.resetBtn {
+  display: flex;
+  margin-top: 5px;
+}

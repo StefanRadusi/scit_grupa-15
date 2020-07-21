@@ -6,6 +6,7 @@ class Game {
     this.renderTitle();
     this.renderLetters();
     this.renderUserInput();
+    this.renderResetButton();
   }
 
   chooseRandomWord() {
@@ -52,9 +53,16 @@ class Game {
 
         if (this.displayLetters.hasLetter(value)) {
           this.displayLetters.displayLetter(value);
+
+          if (this.checkIfWin()) {
+            this.showWiningState();
+          }
         } else {
           this.lives--;
           this.updateLives();
+          if (this.checkIfLoose()) {
+            this.showLoosingState();
+          }
         }
 
         this.input.value = "";
@@ -62,6 +70,61 @@ class Game {
     } else if (this.input.value.length !== 0) {
       this.input.value = event.key;
     }
+  }
+
+  renderResetButton() {
+    this.resetBtn = document.createElement("button");
+    this.resetBtn.innerText = "Reset";
+    this.resetBtn.classList.add("resetBtn");
+    document.body.appendChild(this.resetBtn);
+
+    this.resetBtn.addEventListener("click", this.resetTheGame.bind(this));
+  }
+
+  checkIfLoose() {
+    if (this.lives === 0) return true;
+
+    return false;
+  }
+
+  showLoosingState() {
+    this.livesSpan.innerText = ":You lose";
+    this.input.disabled = true;
+  }
+
+  showWiningState() {
+    this.livesSpan.innerText = ":You won";
+    this.input.disabled = true;
+  }
+
+  checkIfWin() {
+    let k = 0;
+    for (let i = 0; i < this.displayLetters.letters.length; i++)
+      if (this.displayLetters.letters[i].htmlRef.innerText === "_")
+        return false;
+      else {
+        k++;
+      }
+
+    if (k === this.currentWord.length) return true;
+  }
+
+  cleanLetters() {
+    this.displayLetters.lettersContainer.remove();
+  }
+
+  // this must be used in reset button
+  resetTheGame() {
+    this.lives = 5;
+    this.input.disabled = false;
+    this.input.remove();
+    this.resetBtn.remove();
+    this.updateLives();
+    this.cleanLetters();
+    this.chooseRandomWord();
+    this.renderLetters();
+    this.renderUserInput();
+    this.renderResetButton();
   }
 }
 
@@ -81,7 +144,7 @@ class LettersDisplay {
       letterHtml.innerText = "_";
       this.letters.push({
         htmlRef: letterHtml,
-        value: letter,
+        value: letter
       });
       this.lettersContainer.appendChild(letterHtml);
     }
@@ -98,6 +161,8 @@ class LettersDisplay {
 
     return false;
   }
+
+ 
 
   displayLetter(letter) {
     for (const objectLetter of this.letters) {
