@@ -6,6 +6,7 @@ class Game {
     this.renderTitle();
     this.renderLetters();
     this.renderUserInput();
+    this.resetTheGames();
   }
 
   chooseRandomWord() {
@@ -59,7 +60,7 @@ class Game {
         } else {
           this.lives--;
           this.updateLives();
-          if (checkIfLoose()) {
+          if (this.checkIfLoose()) {
             this.showLoosingState();
           }
         }
@@ -72,17 +73,20 @@ class Game {
   }
 
   checkIfLoose() {
-    if (this.lives === 0) true;
-
-    return false;
-  }
+     if (this.lives === 0)  {
+       return true;
+     }
+     return false;
+   }
 
   showLoosingState() {
     // similar with "showWiningState"
+    this.livesSpan.innerText = " YOU LOSE";
+    this.input.disabled = true;
   }
 
   showWiningState() {
-    this.livesSpan.innerText = "You won";
+    this.livesSpan.innerText = " YOU WON";
     this.input.disabled = true;
   }
 
@@ -90,10 +94,25 @@ class Game {
     // true or false
     // this.displayLetters.letters (is an array)
     // for trough this.displayLetters.letters , check if htmlRef.innerText === "_" then false
+    for (const eachLetter of this.displayLetters.letters) {
+      if (eachLetter.htmlRef.innerText === "_") {
+        return false;
+      }
+    }
+    return true;
   }
 
   cleanLetters() {
     this.displayLetters.lettersContainer.remove();
+  }  
+
+  resetTheGames() {
+    this.resetButton = document.createElement("button");
+    this.resetButton.innerText ="Reset";
+    this.resetButton.classList.add("resetButton");
+    document.body.appendChild(this.resetButton);
+
+    this.resetButton.addEventListener("click", this.resetTheGame.bind(this));
   }
 
   // this must be used in reset button
@@ -104,6 +123,11 @@ class Game {
     this.updateLives();
     this.cleanLetters();
     this.displayLetters();
+    this.resetLetters();
+  }  
+  resetLetters() {
+    this.displayLetters.word = this.currentWord;
+    this.displayLetters.createLettersHtml();
   }
 }
 
@@ -150,4 +174,8 @@ class LettersDisplay {
   }
 }
 
+
 new Game();
+
+
+

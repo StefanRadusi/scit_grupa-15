@@ -1,6 +1,3 @@
-body {
-  font-family: sans-serif;
-}
 
 .letters-container {
   display: flex;
@@ -8,4 +5,9 @@ body {
 
 p {
   margin: 10px;
+}
+
+.resetButton {
+  display: flex;
+  margin-top: 15px;
 }
