@@ -72,8 +72,19 @@ class Carousel {
         break;
     }
 
-    console.log(this.indexUrl);
+    if (this.indexUrl <= 0 ) {
+      this.buttons.leftButton.disabled = true;
+    } else {
+      this.buttons.leftButton.disabled = false;
+    }
 
+    if (this.indexUrl === this.urls.length - 3) {
+      this.buttons.rightButton.disabled = true;
+    } else {
+      this.buttons.rightButton.disabled = false;
+    }
+
+    console.log(this.indexUrl);
     // we can only use "updateImgs" after "this.indexUrl" is change in one way or the other
     this.updateImgs();
   }
@@ -110,10 +121,11 @@ class ChangeImgsButtons {
   initialRender(callback) {
     this.leftButton = document.createElement("button");
     this.leftButton.innerText = "<";
+    this.leftButton.disabled = true;
     document.body.prepend(this.leftButton);
 
     this.leftButton.addEventListener("click", function () {
-      callback("left");
+     callback("left");
     });
 
     this.rightButton = document.createElement("button");
