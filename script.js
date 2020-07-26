@@ -1,20 +1,45 @@
+// Use local storage to optimize the carousel
+// store the request response in local storage
+// use the previously stored response to load the img urls
+// add logic in "getListOfImgs"
+// JSON.stringify/JSON.parse
+// don't make request to server if there is data in localstorage
+
+localStorage.setItem("user", "ana");
+
 class Carousel {
   constructor() {
-    // this will get all our ulrs
-    this.getListOfImgs();
-
-    // this will hold the start point for the 3 elemnt erray that is needed for rendering the imgs in the "ImgsList" object
+    // this will hold the start point for the 3 element array that is needed for rendering the imgs in the "ImgsList" object
     this.indexUrl = 0;
+    // this will get all our urls
+    this.getListOfImgs();
   }
 
   getListOfImgs() {
-    // fetch is responsible for calling the server
-    fetch("https://www.themealdb.com/api/json/v1/1/search.php?f=b")
-      .then(function (respose) {
-        return respose.json();
-      })
-      // 'generateUrls' is called after we have the data
-      .then(this.generateUrls.bind(this));
+    // get data from localstorage
+    const json = localStorage.getItem("requestData");
+
+    // if we have data then we render the imgs imidiatly
+    if (json) {
+      this.generateUrls(JSON.parse(json));
+    } else {
+      // if we don't have data in localstorage then we need to fetch them from the server
+      // fetch is responsible for calling the server
+      fetch("https://www.themealdb.com/api/json/v1/1/search.php?f=b")
+        .then(function (respose) {
+          return respose.json();
+        })
+        // 'generateUrls' is called after we have the data
+        // .then(this.generateUrls.bind(this));
+        .then((json) => {
+          console.log(json);
+          // store data from server in localstorage so we can use it later
+          localStorage.setItem("requestData", JSON.stringify(json));
+
+          // render imgs we data from the server
+          this.generateUrls(json);
+        });
+    }
   }
 
   generateUrls(json) {
@@ -32,7 +57,7 @@ class Carousel {
 
   renderImgs() {
     // console.log(this.urls);
-    // we have specilised class for rendering carousell imgs
+    // we have specialized class for rendering carousels imgs
     this.imgs = new ImgsList();
 
     // this will render the imgs without src attribute
@@ -58,6 +83,11 @@ class Carousel {
   // this method will update the start poin for the imgs so that every time the user click on one of the buttons the imgs are updated
 
   changeImgs(direction) {
+    const localStorageValueNoKey = localStorage.getItem("abcd");
+    const localStorageValue = localStorage.getItem("test");
+    console.log("localStorageValueNoKey", localStorageValueNoKey);
+    console.log("localStorageValue", localStorageValue);
+
     console.log("nr of imgs urls", this.urls.length);
     console.log(direction);
     switch (direction) {
@@ -106,7 +136,7 @@ class ImgsList {
 
 class ChangeImgsButtons {
   // this will create the html object for buttons
-  // this will hook as well the callback that commes from the parent object to the 'click' event on buttons
+  // this will hook as well the callback that comme from the parent object to the 'click' event on buttons
   initialRender(callback) {
     this.leftButton = document.createElement("button");
     this.leftButton.innerText = "<";
