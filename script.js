@@ -83,11 +83,11 @@ class Carousel {
 
     if(this.indexUrl<=0) 
     {this.buttons.leftButton.disabled=true;
-    this.indexUrl>0;}
-    else if(this.indexUrl>0) this.buttons.leftButton.disabled=false;
+    }
+    else this.buttons.leftButton.disabled=false;
 
     if (this.indexUrl>this.urls.length-4) {this.buttons.rightButton.disabled=true;}
-    else if(this.indexUrl<this.urls.length-3)
+    else 
     this.buttons.rightButton.disabled=false;
   }
 }
