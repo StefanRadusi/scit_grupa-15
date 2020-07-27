@@ -10,7 +10,7 @@ class Carousel {
   getListOfImgs() {
     // fetch is responsible for calling the server
     fetch("https://www.themealdb.com/api/json/v1/1/search.php?f=b")
-      .then(function (respose) {
+      .then(function(respose) {
         return respose.json();
       })
       // 'generateUrls' is called after we have the data
@@ -19,7 +19,7 @@ class Carousel {
 
   generateUrls(json) {
     // we transform the data from server to a array of simple urls strings
-    this.urls = json.meals.map(function (meal) {
+    this.urls = json.meals.map(function(meal) {
       return meal.strMealThumb;
     });
 
@@ -40,6 +40,8 @@ class Carousel {
 
     //this will update the imgs using "this.indexUrl;"
     this.updateImgs();
+
+    
   }
 
   updateImgs() {
@@ -53,10 +55,12 @@ class Carousel {
     // this callback needs to be defined here in "Carousell" class as this is the brain for the entire component
     // the callback is "this.changeImgs"
     this.buttons.initialRender(this.changeImgs.bind(this));
+  this.buttons.leftButton.disabled=true;
   }
 
   // this method will update the start poin for the imgs so that every time the user click on one of the buttons the imgs are updated
 
+  
   changeImgs(direction) {
     console.log("nr of imgs urls", this.urls.length);
     console.log(direction);
@@ -76,6 +80,15 @@ class Carousel {
 
     // we can only use "updateImgs" after "this.indexUrl" is change in one way or the other
     this.updateImgs();
+
+    if(this.indexUrl<=0) 
+    {this.buttons.leftButton.disabled=true;
+    this.indexUrl>0;}
+    else if(this.indexUrl>0) this.buttons.leftButton.disabled=false;
+
+    if (this.indexUrl>this.urls.length-4) {this.buttons.rightButton.disabled=true;}
+    else if(this.indexUrl<this.urls.length-3)
+    this.buttons.rightButton.disabled=false;
   }
 }
 
@@ -112,7 +125,7 @@ class ChangeImgsButtons {
     this.leftButton.innerText = "<";
     document.body.prepend(this.leftButton);
 
-    this.leftButton.addEventListener("click", function () {
+    this.leftButton.addEventListener("click", function() {
       callback("left");
     });
 
@@ -120,7 +133,7 @@ class ChangeImgsButtons {
     this.rightButton.innerText = ">";
     document.body.appendChild(this.rightButton);
 
-    this.rightButton.addEventListener("click", function () {
+    this.rightButton.addEventListener("click", function() {
       callback("right");
     });
   }
