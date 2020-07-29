@@ -9,3 +9,8 @@ body {
 p {
   margin: 10px;
 }
+
+#btn {
+  margin: 5px;
+  display: block;
+}
