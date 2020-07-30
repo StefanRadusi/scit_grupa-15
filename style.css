@@ -11,3 +11,11 @@ body {
 p {
   margin: 0;
 }
+#letters-container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+}
+.letter-style {
+  margin-left: 5px;
+}
