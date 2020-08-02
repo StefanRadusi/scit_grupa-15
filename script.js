@@ -70,3 +70,37 @@ function renderMeals(meals) {
     mealsContainer.appendChild(mealContainer);
   }
 }
+// console.log("start");
+
+// const buttons = document.querySelectorAll(".nav-button");
+const buttons = document.getElementsByClassName("nav-button");
+// console.log(buttons);
+
+// for (let i = 0; i < buttons.length; i++) {
+//   const button = buttons[i];
+
+// }
+
+for (const button of buttons) {
+  // console.log(button);
+  button.addEventListener("click", (event) => {
+    console.log("click", event.target.dataset.page);
+
+    // hide all pages
+    const pages = document.getElementsByClassName("page");
+    for (const page of pages) {
+      page.classList.remove("active-page");
+    }
+
+    // show only specific page
+    const activePage = document.getElementById(event.target.dataset.page);
+    activePage.classList.add("active-page");
+    console.log(activePage);
+
+    for (const button of buttons) {
+      button.classList.remove("selected");
+    }
+
+    button.classList.add("selected");
+  });
+}
