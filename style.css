@@ -124,7 +124,7 @@ body {
   display: none;
 }
 
-.pop-up-content {
+#pop-up-content {
   width: 80%;
   height: 80%;
   background: white;
