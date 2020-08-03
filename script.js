@@ -10,18 +10,36 @@ localStorage.setItem("user", "ana");
 class Carousel {
   constructor() {
     // this will hold the start point for the 3 element array that is needed for rendering the imgs in the "ImgsList" object
-    this.indexUrl = 0;
+    this.count=1;
+    this.para = document.createElement("p");
+    this.para.classList.add("para")
+    if(localStorage.getItem("storage"))
+      {this.indexUrl=JSON.parse(localStorage.getItem("storage"));
+      
+      ;}
+    else
+      {this.indexUrl = 0;
+      
+      }
+      
+
     // this will get all our urls
     this.getListOfImgs();
-  }
+   
+    document.body.appendChild(this.para)
 
+
+
+  };
+
+  
   getListOfImgs() {
     // get data from localstorage
     const json = localStorage.getItem("requestData");
 
     // if we have data then we render the imgs imidiatly
     if (json) {
-      this.generateUrls(JSON.parse(json));
+      this.generateUrls(JSON.parse(json))
     } else {
       // if we don't have data in localstorage then we need to fetch them from the server
       // fetch is responsible for calling the server
@@ -48,12 +66,19 @@ class Carousel {
       return meal.strMealThumb;
     });
 
+    
+
     // "render imgs will render the img HTML object"
     this.renderImgs();
 
     // this will render the buttons for changing the imgs on user 'click'
-    this.renderButtons();
-  }
+    this.renderButtons(); 
+
+    
+
+    };
+
+  
 
   renderImgs() {
     // console.log(this.urls);
@@ -64,13 +89,34 @@ class Carousel {
     this.imgs.initialRender();
 
     //this will update the imgs using "this.indexUrl;"
+   
     this.updateImgs();
-  }
+   
 
+    if(localStorage.getItem("storage"))
+    {
+    this.count=JSON.parse(localStorage.getItem("count"))
+    this.para.innerText=this.count+"/"+this.urls.length
+   ;
+    }
+    
+    else
+    
+    this.para.innerText=this.count+"/"+this.urls.length;
+  
+    }
+  
   updateImgs() {
+   
     // the actual job of updating the imgs is done by "ImgsList" object, but the method needs a 3 elemnt array
+   
+   
+   
     this.imgs.updateImgsSrc(this.urls.slice(this.indexUrl, this.indexUrl + 3));
-  }
+     
+    };
+
+  
 
   renderButtons() {
     this.buttons = new ChangeImgsButtons();
@@ -78,11 +124,24 @@ class Carousel {
     // this callback needs to be defined here in "Carousell" class as this is the brain for the entire component
     // the callback is "this.changeImgs"
     this.buttons.initialRender(this.changeImgs.bind(this));
+    
+    if(localStorage.getItem("storage") >0 )
+    this.buttons.leftButton.disabled=false;
+    else
+    this.buttons.leftButton.disabled=true;
+
+
+    if(localStorage.getItem("storage")>this.urls.length-4)
+    this.buttons.rightButton.disabled=true;
+    else
+    this.buttons.rightButton.disabled=false;
   }
 
   // this method will update the start poin for the imgs so that every time the user click on one of the buttons the imgs are updated
 
   changeImgs(direction) {
+    
+
     const localStorageValueNoKey = localStorage.getItem("abcd");
     const localStorageValue = localStorage.getItem("test");
     console.log("localStorageValueNoKey", localStorageValueNoKey);
@@ -93,21 +152,55 @@ class Carousel {
     switch (direction) {
       case "left":
         this.indexUrl--;
+        this.count--;
+        this.para.innerText=this.count+"/"+this.urls.length
+
+      
         break;
 
       case "right":
         this.indexUrl++;
+        this.count++
+        this.para.innerText=this.count+"/"+this.urls.length
+
         break;
       default:
         break;
     }
-
+    
     console.log(this.indexUrl);
+   
+   
+localStorage.answer = JSON.stringify(this.indexUrl);
+localStorage.setItem("storage", localStorage.answer);
+localStorage.count= JSON.stringify(this.count);
+localStorage.setItem ("count",localStorage.count);
+console.log(localStorage.count)
+
+
+
+
 
     // we can only use "updateImgs" after "this.indexUrl" is change in one way or the other
     this.updateImgs();
-  }
+    if(this.indexUrl<=0) 
+    {this.buttons.leftButton.disabled=true;
+    }
+    else this.buttons.leftButton.disabled=false;
+
+    if (this.indexUrl>this.urls.length-4) {this.buttons.rightButton.disabled=true;}
+    else 
+    this.buttons.rightButton.disabled=false;
+
+    
+  };
+  
+  
+
+  
 }
+
+
 
 class ImgsList {
   // this will create the html objects that hold the imgs
