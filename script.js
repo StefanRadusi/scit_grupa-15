@@ -1,22 +1,31 @@
-// Use local storage to optimize the carousel
-// store the request response in local storage
+// Use local stoarge to optimize the carousel
+// store the request reponse in local storage
 // use the previously stored response to load the img urls
 // add logic in "getListOfImgs"
 // JSON.stringify/JSON.parse
 // don't make request to server if there is data in localstorage
 
-localStorage.setItem("user", "ana");
+// localStorage.setItem("user", "ana");
 
 class Carousel {
   constructor() {
-    // this will hold the start point for the 3 element array that is needed for rendering the imgs in the "ImgsList" object
-    this.indexUrl = 0;
-    // this will get all our urls
+    this.newP = document.createElement("p");
+    document.body.appendChild(this.newP);
+    this.newP.classList.add("new-p");
+    // this will hold the start point for the 3 elemnt erray that is needed for rendering the imgs in the "ImgsList" object
+    const dataStore = localStorage.getItem("store")
+    if(dataStore){
+      this.indexUrl=JSON.parse(dataStore);
+      } else{
+        this.indexUrl = 0;
+    }
+
+    // this will get all our ulrs
     this.getListOfImgs();
   }
 
   getListOfImgs() {
-    // get data from localstorage
+    // geta data from localstorage
     const json = localStorage.getItem("requestData");
 
     // if we have data then we render the imgs imidiatly
@@ -26,16 +35,16 @@ class Carousel {
       // if we don't have data in localstorage then we need to fetch them from the server
       // fetch is responsible for calling the server
       fetch("https://www.themealdb.com/api/json/v1/1/search.php?f=b")
-        .then(function (respose) {
+        .then(function(respose) {
           return respose.json();
         })
         // 'generateUrls' is called after we have the data
         // .then(this.generateUrls.bind(this));
-        .then((json) => {
+        .then(json => {
           console.log(json);
           // store data from server in localstorage so we can use it later
           localStorage.setItem("requestData", JSON.stringify(json));
-
+            localStorage.setItem("requestUrl", this.updateImgsSrc(urls));
           // render imgs we data from the server
           this.generateUrls(json);
         });
@@ -44,7 +53,7 @@ class Carousel {
 
   generateUrls(json) {
     // we transform the data from server to a array of simple urls strings
-    this.urls = json.meals.map(function (meal) {
+    this.urls = json.meals.map(function(meal) {
       return meal.strMealThumb;
     });
 
@@ -57,7 +66,7 @@ class Carousel {
 
   renderImgs() {
     // console.log(this.urls);
-    // we have specialized class for rendering carousels imgs
+    // we have specilised class for rendering carousell imgs
     this.imgs = new ImgsList();
 
     // this will render the imgs without src attribute
@@ -68,10 +77,23 @@ class Carousel {
   }
 
   updateImgs() {
+    const urls = localStorage.getItem("requestUrl");
     // the actual job of updating the imgs is done by "ImgsList" object, but the method needs a 3 elemnt array
     this.imgs.updateImgsSrc(this.urls.slice(this.indexUrl, this.indexUrl + 3));
-  }
+  
+    // first, we need to stringify the index number, store and then parse in the new paragraph
+    localStorage.numberCount = JSON.stringify(this.indexUrl);
+    localStorage.setItem("store", localStorage.numberCount);
 
+    if(localStorage.getItem("store")){
+      this.indexUrl = JSON.parse(localStorage.getItem("store"));
+      this.newP.innerText = this.indexUrl + "/" + this.urls.length;
+    } else {
+      this.newP1.innerText = this.indexUrl + "/" + this.urls.length;
+    }
+  
+  }
+ 
   renderButtons() {
     this.buttons = new ChangeImgsButtons();
     // the buttons created by the "ChangeImgsButtons" object needs callback for reacting to user click
@@ -85,11 +107,11 @@ class Carousel {
   changeImgs(direction) {
     const localStorageValueNoKey = localStorage.getItem("abcd");
     const localStorageValue = localStorage.getItem("test");
-    console.log("localStorageValueNoKey", localStorageValueNoKey);
-    console.log("localStorageValue", localStorageValue);
+    // console.log("localStorageValueNoKey", localStorageValueNoKey);
+    // console.log("localStorageValue", localStorageValue);
 
     console.log("nr of imgs urls", this.urls.length);
-    console.log(direction);
+    // console.log(direction);
     switch (direction) {
       case "left":
         this.indexUrl--;
@@ -100,12 +122,23 @@ class Carousel {
         break;
       default:
         break;
-    }
-
-    console.log(this.indexUrl);
-
+    } 
+    
     // we can only use "updateImgs" after "this.indexUrl" is change in one way or the other
     this.updateImgs();
+    
+    if (this.indexUrl <= 0) {
+        this.buttons.leftButton.disabled = true;
+      } else {
+        this.buttons.leftButton.disabled = false;
+      }
+  
+      if (this.indexUrl > this.urls.length - 4) {
+        this.buttons.rightButton.disabled = true;
+      } else {
+        this.buttons.rightButton.disabled = false;
+      }
+    console.log(this.indexUrl);
   }
 }
 
@@ -131,18 +164,19 @@ class ImgsList {
       const img = this.imgs[i];
       img.src = urls[i];
     }
+    // console.log(urls);
   }
 }
 
 class ChangeImgsButtons {
   // this will create the html object for buttons
-  // this will hook as well the callback that comme from the parent object to the 'click' event on buttons
+  // this will hook as well the callback that commes from the parent object to the 'click' event on buttons
   initialRender(callback) {
     this.leftButton = document.createElement("button");
     this.leftButton.innerText = "<";
     document.body.prepend(this.leftButton);
 
-    this.leftButton.addEventListener("click", function () {
+    this.leftButton.addEventListener("click", function() {
       callback("left");
     });
 
@@ -150,7 +184,7 @@ class ChangeImgsButtons {
     this.rightButton.innerText = ">";
     document.body.appendChild(this.rightButton);
 
-    this.rightButton.addEventListener("click", function () {
+    this.rightButton.addEventListener("click", function() {
       callback("right");
     });
   }
