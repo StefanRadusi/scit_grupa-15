@@ -53,6 +53,7 @@ class Carousel {
     // this callback needs to be defined here in "Carousell" class as this is the brain for the entire component
     // the callback is "this.changeImgs"
     this.buttons.initialRender(this.changeImgs.bind(this));
+    this.buttons.leftButton.disabled = true;
   }
 
   // this method will update the start poin for the imgs so that every time the user click on one of the buttons the imgs are updated
@@ -60,10 +61,12 @@ class Carousel {
   changeImgs(direction) {
     console.log("nr of imgs urls", this.urls.length);
     console.log(direction);
+
     switch (direction) {
       case "left":
         this.indexUrl--;
         break;
+
 
       case "right":
         this.indexUrl++;
@@ -72,6 +75,23 @@ class Carousel {
         break;
     }
 
+    // if (this.indexUrl <= 0) {
+    //   this.buttons.leftButton.disabled = true;
+    // } else {
+    //   this.buttons.leftButton.disabled = false;
+    // }
+
+    // if (this.indexUrl > this.urls.length - this.imgs.imgs.length - 1) {
+    //   this.buttons.rightButton.disabled = true;
+    // } else {
+    //   this.buttons.rightButton.disabled = false;
+    // }
+
+    const { leftButton, rightButton } = this.buttons
+    const visibleImgsLength = this.urls.length - this.imgs.imgs.length;
+
+    this.indexUrl <= 0 ? leftButton.disabled = true : leftButton.disabled = false;
+    this.indexUrl >= visibleImgsLength ? rightButton.disabled = true : rightButton.disabled = false;
     console.log(this.indexUrl);
 
     // we can only use "updateImgs" after "this.indexUrl" is change in one way or the other
@@ -111,7 +131,6 @@ class ChangeImgsButtons {
     this.leftButton = document.createElement("button");
     this.leftButton.innerText = "<";
     document.body.prepend(this.leftButton);
-
     this.leftButton.addEventListener("click", function () {
       callback("left");
     });
