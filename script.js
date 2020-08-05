@@ -65,11 +65,24 @@ class Carousel {
         this.indexUrl--;
         break;
 
+
       case "right":
         this.indexUrl++;
         break;
       default:
         break;
+    }
+
+    if (this.indexUrl <= 0){
+      this.buttons.leftButton.disabled = true;
+    } else {
+      this.buttons.leftButton.disabled = false;
+    }
+
+    if (this.indexUrl === this.urls.length - 3) {
+      this.buttons.rightButton.disabled = true;
+    } else {
+      this.buttons.rightButton.disabled = false;
     }
 
     console.log(this.indexUrl);
