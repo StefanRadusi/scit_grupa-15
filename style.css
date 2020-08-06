@@ -16,4 +16,9 @@ img {
 button {
   height: 30px;
   width: 30px;
+} 
+
+p {
+  position: relative;
+  left: 500px;
 }

@@ -12,8 +12,17 @@ class Carousel {
     // this will hold the start point for the 3 element array that is needed for rendering the imgs in the "ImgsList" object
     this.indexUrl = 0;
     // this will get all our urls
+    this.newParagraph = document.createElement("p");
+    this.newParagraph.classList.add("PaginationNumber");
+    document.body.appendChild(this.newParagraph);
+
+    if (localStorage.getItem("store")) {
+      this.indexUrl = JSON.parse(localStorage.getItem("store")); 
+      } else {
+      this.indexUrl = 1;
+    } 
     this.getListOfImgs();
-  }
+  };
 
   getListOfImgs() {
     // get data from localstorage
@@ -53,7 +62,7 @@ class Carousel {
 
     // this will render the buttons for changing the imgs on user 'click'
     this.renderButtons();
-  }
+  };
 
   renderImgs() {
     // console.log(this.urls);
@@ -65,11 +74,23 @@ class Carousel {
 
     //this will update the imgs using "this.indexUrl;"
     this.updateImgs();
+
   }
 
   updateImgs() {
     // the actual job of updating the imgs is done by "ImgsList" object, but the method needs a 3 elemnt array
-    this.imgs.updateImgsSrc(this.urls.slice(this.indexUrl, this.indexUrl + 3));
+    this.imgs.updateImgsSrc(this.urls.slice(this.indexUrl, this.indexUrl + 3));  
+    
+    localStorage.numberCount = JSON.stringify(this.indexUrl);
+    localStorage.setItem("store", localStorage.numberCount);
+
+    if (localStorage.getItem("store")) {
+      this.indexUrl = JSON.parse(localStorage.getItem("store"));
+      this.newParagraph.innerText = this.indexUrl + "/" + this.urls.length
+    } else {
+      this.newParagraph.innerText =  this.indexUrl + "/" + this.urls.length;
+    }
+
   }
 
   renderButtons() {
@@ -102,10 +123,23 @@ class Carousel {
         break;
     }
 
+    if (this.indexUrl <= 0) {
+      this.buttons.leftButton.disabled = true;
+    } else {
+      this.buttons.leftButton.disabled = false;
+    }
+
+    if (this.indexUrl > this.urls.length - 4) {
+      this.buttons.rightButton.disabled = true;
+    } else {
+      this.buttons.rightButton.disabled = false;
+    }
+
     console.log(this.indexUrl);
 
     // we can only use "updateImgs" after "this.indexUrl" is change in one way or the other
     this.updateImgs();
+
   }
 }
 
