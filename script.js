@@ -10,9 +10,19 @@ localStorage.setItem("user", "ana");
 class Carousel {
   constructor() {
     // this will hold the start point for the 3 element array that is needed for rendering the imgs in the "ImgsList" object
-    this.indexUrl = 0;
+    this.count = 1;
+    this.newP = document.createElement("p");
+    this.newP.classList.add("newP");
+    if (localStorage.getItem("storage")) {
+      this.indexUrl = JSON.parse(localStorage.getItem("storage"));
+    } else {
+      this.indexUrl = 0;
+    }
+
     // this will get all our urls
     this.getListOfImgs();
+
+    document.body.appendChild(this.newP);
   }
 
   getListOfImgs() {
@@ -64,7 +74,15 @@ class Carousel {
     this.imgs.initialRender();
 
     //this will update the imgs using "this.indexUrl;"
+
     this.updateImgs();
+
+    if (localStorage.getItem("storage")) {
+      this.count = JSON.parse(localStorage.getItem("count"));
+      this.newP.innerText = this.count + "/" + this.urls.length;
+    } else {
+      this.newP.innerText = this.count + "/" + this.urls.length;
+    }
   }
 
   updateImgs() {
@@ -78,7 +96,20 @@ class Carousel {
     // this callback needs to be defined here in "Carousell" class as this is the brain for the entire component
     // the callback is "this.changeImgs"
     this.buttons.initialRender(this.changeImgs.bind(this));
+
+    if (localStorage.getItem("storage") > 0) {
+      this.buttons.leftButton.disabled = false;
+    } else {
+      this.buttons.leftButton.disabled = true;
+    }
+
+    if (localStorage.getItem("storage") > this.urls.length - 4) {
+      this.buttons.rightButton.disabled = true;
+    }else {
+      this.buttons.rightButton.disabled = false;
   }
+}
+
 
   // this method will update the start poin for the imgs so that every time the user click on one of the buttons the imgs are updated
 
@@ -93,10 +124,16 @@ class Carousel {
     switch (direction) {
       case "left":
         this.indexUrl--;
+        this.count--;
+        this.newP.innerText = this.count + "/" + this.urls.length;
+
         break;
 
       case "right":
         this.indexUrl++;
+        this.count++;
+        this.newP.innerText = this.count + "/" + this.urls.length;
+
         break;
       default:
         break;
@@ -104,8 +141,21 @@ class Carousel {
 
     console.log(this.indexUrl);
 
+    localStorage.answer = JSON.stringify(this.indexUrl);
+    localStorage.setItem("storage", localStorage.answer);
+    localStorage.count = JSON.stringify(this.count);
+    localStorage.setItem("count", localStorage.count);
+    console.log(localStorage.count);
+
     // we can only use "updateImgs" after "this.indexUrl" is change in one way or the other
     this.updateImgs();
+    if (this.indexUrl <= 0) {
+      this.buttons.leftButton.disabled = true;
+    } else this.buttons.leftButton.disabled = false;
+
+    if (this.indexUrl > this.urls.length - 4) {
+      this.buttons.rightButton.disabled = true;
+    } else this.buttons.rightButton.disabled = false;
   }
 }
 
