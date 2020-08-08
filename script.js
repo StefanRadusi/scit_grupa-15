@@ -10,9 +10,24 @@ localStorage.setItem("user", "ana");
 class Carousel {
   constructor() {
     // this will hold the start point for the 3 element array that is needed for rendering the imgs in the "ImgsList" object
-    this.indexUrl = 0;
+
+    // const index = localStorage.getItem("currentIndex");
+    // if (index) {
+    //   this.indexUrl = parseInt(index);
+    // } else {
+    //   this.indexUrl = 0;
+    // }
     // this will get all our urls
     this.getListOfImgs();
+  }
+
+  set indexUrl(value) {
+    localStorage.setItem("currentIndex", value);
+  }
+
+  get indexUrl() {
+    const index = localStorage.getItem("currentIndex");
+    return index ? parseInt(index) : 0;
   }
 
   getListOfImgs() {
@@ -53,6 +68,18 @@ class Carousel {
 
     // this will render the buttons for changing the imgs on user 'click'
     this.renderButtons();
+
+    this.renderPaginationContainer();
+  }
+
+  renderPaginationContainer() {
+    this.paginationContainer = document.createElement("div");
+    document.body.appendChild(this.paginationContainer);
+    this.updatePaginationContainer();
+  }
+
+  updatePaginationContainer() {
+    this.paginationContainer.innerText = `${this.indexUrl + 1} / ${this.urls.length}`
   }
 
   renderImgs() {
@@ -90,6 +117,7 @@ class Carousel {
 
     console.log("nr of imgs urls", this.urls.length);
     console.log(direction);
+
     switch (direction) {
       case "left":
         this.indexUrl--;
@@ -101,8 +129,10 @@ class Carousel {
       default:
         break;
     }
-
+    this.updatePaginationContainer();
+    // localStorage.setItem("currentIndex", this.indexUrl);
     console.log(this.indexUrl);
+
 
     // we can only use "updateImgs" after "this.indexUrl" is change in one way or the other
     this.updateImgs();
