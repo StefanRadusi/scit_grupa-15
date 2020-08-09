@@ -20,11 +20,65 @@ class PopUp {
       .then((response) => response.json())
       .then((json) => {
         console.log(json);
+        this.displayMeals(json.meals);
       });
+    //console.log("aa");  !!!!PROGRAMARE ASINCRONA
   }
 
   close() {
     this.popHtml.classList.remove("pop-up-show");
+  }
+
+  displayMeals(mealsList) {
+    // console.log(mealsList);
+    // for (const meal of mealsList) {
+    //   console.log("aaa", meal);
+    //   const mealPopContainer = document.createElement("div");
+    //   mealPopContainer.classList.add("meal-pop-container");
+    //   document.getElementById("pop-up-content").appendChild(mealPopContainer);
+
+    //   const { strMeal, strMealThumb } = meal;
+    //   const mealImg = document.createElement("img");
+    //   mealImg.src = strMealThumb;
+    //   mealPopContainer.appendChild(mealImg);
+    //   const mealTitle = document.createElement("h4");
+    //   mealTitle.innerText = strMeal;
+    //   mealPopContainer.appendChild(mealTitle);
+    // }
+    this.popUpContentContainer = document.getElementById("pop-up-content");
+    this.mealListArray = [];
+    for (const meal of mealsList) {
+      this.mealListArray.push(
+        new MealElement(
+          meal.strMealThumb,
+          meal.strMeal,
+          this.popUpContentContainer
+        )
+      )
+    }
+  }
+}
+class MealElement {
+  constructor(img, title, parent) {
+    this.img = img;
+    this.title = title;
+    this.parent = parent;
+
+    this.renderPopUp();
+  }
+
+  renderPopUp() {
+    const mealPopContainer = document.createElement("div");
+    mealPopContainer.classList.add("meal-pop-container");
+    this.parent.appendChild(mealPopContainer);
+
+    const mealImg = document.createElement("img");
+    mealImg.src = this.img;
+    mealPopContainer.appendChild(mealImg);
+
+    const mealTitle = document.createElement("h4");
+    mealTitle.innerText = this.title;
+    mealPopContainer.appendChild(mealTitle);
   }
 }
 
@@ -50,6 +104,7 @@ class Categories {
 
   renderCategories() {
     // console.log(this.categories);
+    //prin array-ul gol creat se formeaza o referinta 
     this.cards = [];
     for (const category of this.categories) {
       console.log(category);
