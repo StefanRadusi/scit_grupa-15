@@ -128,6 +128,7 @@ body {
   width: 80%;
   height: 80%;
   background: white;
+  overflow: scroll;
 }
 
 #close {
@@ -139,3 +140,18 @@ body {
 #pop-up.pop-up-show {
   display: flex;
 }
+
+.meal-container-pop-up {
+  display: flex;
+  }
+  
+  
+.meal-container-pop-up img {
+    height: 100px;
+    width: 100px;
+    margin: 25px;
+  }
+  
+.meal-container-pop-up h4 {
+    align-self: center;
+  }

@@ -20,11 +20,51 @@ class PopUp {
       .then((response) => response.json())
       .then((json) => {
         console.log(json);
+        this.displayMeals(json.meals);
       });
   }
 
   close() {
     this.popHtml.classList.remove("pop-up-show");
+    this.ContentContainer.innerHTML = "";
+  }
+
+  displayMeals(mealsList) {
+    this.ContentContainer = document.getElementById("pop-up-content");
+    this.ArrayMealList = [];
+    for (const meal of mealsList) {
+      this.ArrayMealList.push(
+        new MealElement(
+          meal.strMealThumb,
+          meal.strMeal,
+          this.ContentContainer
+        )
+      )
+    }
+  }
+}
+
+class MealElement {
+  constructor(img, title, parent) {
+    this.img = img;
+    this.title = title;
+    this.parent = parent;
+
+    this.PopUpContent();
+  }
+
+  PopUpContent() {
+    const mealContainerPopUp = document.createElement("div");
+    mealContainerPopUp.classList.add("meal-container-pop-up");
+    this.parent.appendChild(mealContainerPopUp);
+
+    const mealImgPop = document.createElement("img");
+    mealImgPop.src = this.img;
+    mealContainerPopUp.appendChild(mealImgPop);
+
+    const mealTitlePop = document.createElement("h4");
+    mealTitlePop.innerText = this.title;
+    mealContainerPopUp.appendChild(mealTitlePop);
   }
 }
 
@@ -32,11 +72,11 @@ const popUp = new PopUp();
 
 class Categories {
   constructor() {
-    console.log("in constructor");
+    //console.log("in constructor");
 
     this.htmlContainer = document.getElementById("meals-categories-container");
     this.getMealsCategories();
-    console.log(this.categories);
+    //console.log(this.categories);
   }
 
   getMealsCategories() {
@@ -52,7 +92,7 @@ class Categories {
     // console.log(this.categories);
     this.cards = [];
     for (const category of this.categories) {
-      console.log(category);
+      //console.log(category);
       this.cards.push(
         new MealCategory(
           category.strCategory,
@@ -79,7 +119,7 @@ class MealCategory {
     const container = document.createElement("div");
     container.classList.add("meal-category-card");
     container.addEventListener("click", () => {
-      console.log(this.tile);
+      //console.log(this.tile);
       popUp.show(this.tile);
     });
 
