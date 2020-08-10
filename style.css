@@ -128,6 +128,11 @@ body {
   width: 80%;
   height: 80%;
   background: white;
+  display:flex;
+  overflow: auto;
+  flex-direction: column;
+
+
 }
 
 #close {
@@ -138,4 +143,21 @@ body {
 
 #pop-up.pop-up-show {
   display: flex;
+
 }
+
+
+.pop-up-photos{
+  width: 100px;
+  height:100px;
+  margin:20px;
+  border-radius:3px;
+  align-self: flex-start;
+
+}
+.text-pop-up{margin: 20px;
+  align-self: center;
+  
+}
+
+.pop-up-div{display: flex;}
