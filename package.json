@@ -1,0 +1,30 @@
+{
+  "name": "scit_grupa-15",
+  "version": "1.0.0",
+  "description": "this is scit group 15 project",
+  "main": "index.js",
+  "scripts": {
+    "webpack": "webpack",
+    "start-server": "webpack-dev-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StefanRadusi/scit_grupa-15.git"
+  },
+  "keywords": [
+    "scit"
+  ],
+  "author": "stef",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/StefanRadusi/scit_grupa-15/issues"
+  },
+  "homepage": "https://github.com/StefanRadusi/scit_grupa-15#readme",
+  "dependencies": {
+    "lodash": "^4.17.19",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  }
+}
