@@ -125,8 +125,8 @@ body {
 }
 
 #pop-up-content {
-  width: 80%;
-  height: 80%;
+  width: 90%;
+  height: 95%;
   background: white;
 }
 
@@ -137,5 +137,25 @@ body {
 }
 
 #pop-up.pop-up-show {
+  display: flex;
+
+}
+
+
+.pop-up-imgs{
+  width: 100px;
+  height:100px;
+  margin:20px;
+  border-radius:3px;
+  align-self: flex-start;
+
+}
+.text-pop-up{
+  margin: 10px;
+  align-self: center;
+  
+}
+
+.pop-up-div{
   display: flex;
 }
