@@ -9,6 +9,7 @@ class PopUp {
       .getElementById("close")
       .addEventListener("click", this.close.bind(this));
       
+      
   }
 
   show(mealCategory) {
