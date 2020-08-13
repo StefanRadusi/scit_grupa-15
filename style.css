@@ -37,7 +37,6 @@ body {
 .article-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
 }
 
 .article {
@@ -52,18 +51,29 @@ body {
   margin-bottom: 0px;
 }
 
+.article-show-hide-desc-button {
+  background: none;
+  border: none;
+  color: grey;
+  margin-top: 30px;
+  outline: none;
+  cursor: pointer;
+}
+
 .article-date {
   font-weight: bold;
+  margin-left: auto;
 }
 
 .article-short-description {
   height: 100px;
 
   overflow: auto;
+  display: none;
 }
 
-.article:last-child {
-  border-bottom: none;
+.article-short-description-show {
+  display: block;
 }
 
 .comment {
