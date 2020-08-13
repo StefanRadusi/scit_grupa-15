@@ -10,22 +10,53 @@ class PopUp {
 
   show(mealCatergory) {
     this.popHtml.classList.add("pop-up-show");
-    this.renderMealsList(mealCatergory);
+    this.renderMealsList(this.popHtml, mealCatergory);
   }
 
-  renderMealsList(mealCatergory) {
+  renderMealsList(popHtml, mealCatergory) {
     fetch(
       `https://www.themealdb.com/api/json/v1/1/filter.php?c=${mealCatergory}`
     )
       .then((response) => response.json())
       .then((json) => {
         console.log(json);
+        this.displayMeals(popHtml, json);
       });
   }
 
   close() {
     this.popHtml.classList.remove("pop-up-show");
+    
   }
+
+  displayMeals(popHtml, json){
+    for (const meal of json.meals) {
+console.log(meal.strMealThumb);
+    const container =  document.createElement("div");
+    container.classList.add("popUpDivContainer")
+    
+    
+    const imgContainer = document.createElement("img");
+    imgContainer.src = meal.strMealThumb;
+    imgContainer.classList.add("popUpImg")
+
+    const recipeTitle = document.createElement('p');
+    recipeTitle.classList.add('popUpText');
+    recipeTitle.innerText = meal.strMeal;
+
+
+    container.appendChild(imgContainer);
+    container.appendChild(recipeTitle)
+
+
+
+      document.getElementById("pop-up-content").appendChild(container);
+      document.getElementById("close").addEventListener("click",()=>{
+        container.remove()
+      })
+    }
+  }
+
 }
 
 const popUp = new PopUp();
