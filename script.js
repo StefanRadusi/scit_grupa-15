@@ -12,6 +12,11 @@ class Carousel {
     // this will hold the start point for the 3 element array that is needed for rendering the imgs in the "ImgsList" object
     this.indexUrl = 0;
     // this will get all our urls
+    this.paginationParagraph = document.createElement("p");
+    this.paginationParagraph.classList.add("PageNumber");
+    document.body.appendChild(this.paginationParagraph);
+
+    localStorage.getItem("store") ? this.indexUrl = JSON.parse(localStorage.getItem("store")) : this.indexUrl = 1;
     this.getListOfImgs();
   }
 
@@ -70,6 +75,16 @@ class Carousel {
   updateImgs() {
     // the actual job of updating the imgs is done by "ImgsList" object, but the method needs a 3 elemnt array
     this.imgs.updateImgsSrc(this.urls.slice(this.indexUrl, this.indexUrl + 3));
+
+    localStorage.numberCount = JSON.stringify(this.indexUrl);
+    localStorage.setItem("store", localStorage.numberCount);
+
+    if (!localStorage.getItem("store")) {
+      this.paginationParagraph.innerText = this.indexUrl + "/" + this.urls.length
+    } else {
+      this.indexUrl = JSON.parse(localStorage.getItem("store"));
+      this.paginationParagraph.innerText = this.indexUrl + "/" + this.urls.length
+    }
   }
 
   renderButtons() {
@@ -83,7 +98,8 @@ class Carousel {
   // this method will update the start poin for the imgs so that every time the user click on one of the buttons the imgs are updated
 
   changeImgs(direction) {
-    const localStorageValueNoKey = localStorage.getItem("abcd");
+    let localStorageValueNoKey;
+    localStorageValueNoKey = localStorage.getItem("abcd");
     const localStorageValue = localStorage.getItem("test");
     console.log("localStorageValueNoKey", localStorageValueNoKey);
     console.log("localStorageValue", localStorageValue);
@@ -101,6 +117,10 @@ class Carousel {
       default:
         break;
     }
+
+    this.indexUrl <= 0 ? this.buttons.leftButton.disabled = true : this.buttons.leftButton.disabled = false;
+
+    this.indexUrl > this.urls.length - 4 ? this.buttons.rightButton.disabled = true : this.buttons.rightButton.disabled = false;
 
     console.log(this.indexUrl);
 
