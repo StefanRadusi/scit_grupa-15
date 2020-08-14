@@ -15,16 +15,59 @@ class PopUp {
 
   renderMealsList(mealCatergory) {
     fetch(
-      `https://www.themealdb.com/api/json/v1/1/filter.php?c=${mealCatergory}`
-    )
+        'https://www.themealdb.com/api/json/v1/1/filter.php?c=' + mealCatergory
+      )
       .then((response) => response.json())
       .then((json) => {
         console.log(json);
+        this.showMeals(json.meals);
       });
   }
 
   close() {
     this.popHtml.classList.remove("pop-up-show");
+    this.MealContainer.innerHTML = "";
+  }
+
+  showMeals(mealsList) {
+    this.MealContainer = document.getElementById("pop-up-content");
+    this.ArrayMealList = [];
+    for (const meal of mealsList) {
+      this.ArrayMealList.push(
+        new MealElement(
+          meal.strMealThumb,
+          meal.strMeal,
+          this.MealContainer
+        )
+      )
+    }
+  }
+}
+
+class MealElement {
+  constructor(img, title, parent) {
+    this.img = img;
+    this.title = title;
+    this.parent = parent;
+
+    this.MealPopUpContent();
+  }
+
+  MealPopUpContent() {
+      let mealContainerPopUp;
+      mealContainerPopUp = document.createElement("div");
+      mealContainerPopUp.classList.add("meal-container-pop-up");
+      this.parent.appendChild(mealContainerPopUp);
+
+      let mealImgPop;
+      mealImgPop = document.createElement("img");
+      mealImgPop.src = this.img;
+      mealContainerPopUp.appendChild(mealImgPop);
+
+      let mealTitlePop;
+      mealTitlePop = document.createElement("h4");
+      mealTitlePop.innerText = this.title;
+      mealContainerPopUp.appendChild(mealTitlePop);
   }
 }
 
@@ -32,11 +75,11 @@ const popUp = new PopUp();
 
 class Categories {
   constructor() {
-    console.log("in constructor");
+   
 
     this.htmlContainer = document.getElementById("meals-categories-container");
     this.getMealsCategories();
-    console.log(this.categories);
+   
   }
 
   getMealsCategories() {
@@ -49,10 +92,10 @@ class Categories {
   }
 
   renderCategories() {
-    // console.log(this.categories);
+    
     this.cards = [];
     for (const category of this.categories) {
-      console.log(category);
+      
       this.cards.push(
         new MealCategory(
           category.strCategory,
@@ -76,26 +119,29 @@ class MealCategory {
   }
 
   render() {
-    const container = document.createElement("div");
-    container.classList.add("meal-category-card");
-    container.addEventListener("click", () => {
-      console.log(this.tile);
-      popUp.show(this.tile);
-    });
+      const container = document.createElement("div");
+      container.classList.add("meal-category-card");
+      container.addEventListener("click", () => {
+        //console.log(this.tile);
+        popUp.show(this.tile);
+      });
 
-    const tileHtml = document.createElement("h3");
-    tileHtml.innerText = this.tile;
-    container.appendChild(tileHtml);
+      let tileHtml;
+      tileHtml = document.createElement("h3");
+      tileHtml.innerText = this.tile;
+      container.appendChild(tileHtml);
 
-    const imgHtml = document.createElement("img");
-    imgHtml.src = this.img;
-    container.appendChild(imgHtml);
+      let imgHtml;
+      imgHtml = document.createElement("img");
+      imgHtml.src = this.img;
+      container.appendChild(imgHtml);
 
-    const descHtml = document.createElement("p");
-    descHtml.innerText = this.shortDesc;
-    container.appendChild(descHtml);
+      let descHtml;
+      descHtml = document.createElement("p");
+      descHtml.innerText = this.shortDesc;
+      container.appendChild(descHtml);
 
-    this.parent.appendChild(container);
+      this.parent.appendChild(container);
   }
 }
 
