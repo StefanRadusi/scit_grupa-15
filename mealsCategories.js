@@ -6,6 +6,8 @@ class PopUp {
     document
       .getElementById("close")
       .addEventListener("click", this.close.bind(this));
+      const containerPopUpContent = document.getElementById("pop-up-content");
+      this.renderMealsList();
   }
 
   show(mealCatergory) {
@@ -15,12 +17,27 @@ class PopUp {
 
   renderMealsList(mealCatergory) {
     fetch(
-      `https://www.themealdb.com/api/json/v1/1/filter.php?c=${mealCatergory}`
-    )
-      .then((response) => response.json())
-      .then((json) => {
+      `https://www.themealdb.com/api/json/v1/1/filter.php?c=${mealCatergory}`)
+      .then(response => response.json())
+      .then(json => {
         console.log(json);
+        this.meals = json.meals;
+        this.renderCategoriesPopUp();
       });
+  }
+
+  renderCategoriesPopUp() {
+    // console.log(this.categories);
+    this.cardsPopUp = [];
+    for (const meal of this.meals) {
+      this.cardsPopUp.push(
+        new MealCategoryPopUp(
+          meal.strMeal,
+          meal.strMealThumb,
+          this.popHtml
+        )
+      );
+    }
   }
 
   close() {
@@ -32,17 +49,16 @@ const popUp = new PopUp();
 
 class Categories {
   constructor() {
-    console.log("in constructor");
+    // console.log("in constructor");
 
     this.htmlContainer = document.getElementById("meals-categories-container");
     this.getMealsCategories();
-    console.log(this.categories);
   }
 
   getMealsCategories() {
     fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
-      .then((response) => response.json())
-      .then((json) => {
+      .then(response => response.json())
+      .then(json => {
         this.categories = json.categories;
         this.renderCategories();
       });
@@ -52,7 +68,7 @@ class Categories {
     // console.log(this.categories);
     this.cards = [];
     for (const category of this.categories) {
-      console.log(category);
+      // console.log(category);
       this.cards.push(
         new MealCategory(
           category.strCategory,
@@ -96,6 +112,33 @@ class MealCategory {
     container.appendChild(descHtml);
 
     this.parent.appendChild(container);
+  }
+}
+
+
+class MealCategoryPopUp {
+  constructor(title, imgPopUp, parentPopUp) {
+    this.title = title;
+    this.imgPopUp = imgPopUp;
+    this.parentPopUp = parentPopUp;
+
+    this.renderPopUp();
+  }
+
+  renderPopUp() {
+    const containerPopContent = document.getElementById("pop-up-content");
+
+    const titleHtml = document.createElement("h3");
+    titleHtml.innerText = this.title;
+    titleHtml.classList.add("title-pop-up")
+    containerPopContent.appendChild(titleHtml);
+
+    const imgHtmlPopUp = document.createElement("img");
+    imgHtmlPopUp.src = this.imgPopUp;
+    imgHtmlPopUp.classList.add("img-pop-up")
+    containerPopContent.appendChild(imgHtmlPopUp);
+
+    this.parentPopUp.appendChild(containerPopContent);
   }
 }
 
