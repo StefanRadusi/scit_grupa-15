@@ -53,6 +53,7 @@ class Carousel {
     // this callback needs to be defined here in "Carousell" class as this is the brain for the entire component
     // the callback is "this.changeImgs"
     this.buttons.initialRender(this.changeImgs.bind(this));
+    this.buttons.disableButtonLeft(this.indexUrl);
   }
 
   // this method will update the start poin for the imgs so that every time the user click on one of the buttons the imgs are updated
@@ -76,6 +77,8 @@ class Carousel {
 
     // we can only use "updateImgs" after "this.indexUrl" is change in one way or the other
     this.updateImgs();
+  this.buttons.disableButtonLeft(this.indexUrl);
+  this.buttons.disableButtonRight(this.indexUrl, this.urls.length);
   }
 }
 
@@ -124,6 +127,14 @@ class ChangeImgsButtons {
       callback("right");
     });
   }
+
+
+disableButtonLeft(index) {
+    index === 0 ? this.leftButton.disabled = true : this.leftButton.disabled = false;
 }
 
+disableButtonRight(index , totalUrls) {
+    index >= totalUrls - 3 ? this.rightButton.disabled = true : this.rightButton.disabled = false;
+}
+}
 new Carousel();
