@@ -94,7 +94,7 @@ body {
   height: calc(100% - 30px);
   color: black;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.5s ease;
   overflow: auto;
 }
 
@@ -128,6 +128,7 @@ body {
   width: 80%;
   height: 80%;
   background: white;
+  overflow: scroll;
 }
 
 #close {
@@ -138,4 +139,35 @@ body {
 
 #pop-up.pop-up-show {
   display: flex;
+}
+
+.meal-container-pop-up {
+  display: flex;
+}
+
+
+.meal-container-pop-up img {
+  height: 120px;
+  width: 120px;
+  margin: 30px;
+  transition: 0.5s ease;
+}
+
+.meal-container-pop-up h4 {
+  align-self: center;
+  color: rgb(68, 68, 68);
+}
+
+.meal-container-pop-up img:hover{
+  opacity: 70%;
+  content: '\f84c';
+   -webkit-transform: scale(1.2);
+   -ms-transform: scale(1.2);
+   transform: scale(1.2);
+   border-radius:50%;
+   /* border: 1px solid rgb(73, 73, 73); */
+   /* -webkit-transform: rotateZ(-30deg);
+   -ms-transform: rotateZ(-30deg);
+   transform: rotateZ(-30deg); */
+   background:grey;
 }
