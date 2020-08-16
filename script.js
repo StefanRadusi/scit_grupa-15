@@ -10,9 +10,13 @@ localStorage.setItem("user", "ana");
 class Carousel {
   constructor() {
     // this will hold the start point for the 3 element array that is needed for rendering the imgs in the "ImgsList" object
-    this.indexUrl = 0;
+    if(localStorage.getItem("currentIndex")){
+      this.indexUrl = Number(localStorage.getItem("currentIndex"));
+    } else {this.indexUrl = 0;}
+    
     // this will get all our urls
     this.getListOfImgs();
+    this.renderPagination(this.indexUrl+1,this.urls.length)
   }
 
   getListOfImgs() {
@@ -103,11 +107,23 @@ class Carousel {
     }
 
     console.log(this.indexUrl);
-
+    
     // we can only use "updateImgs" after "this.indexUrl" is change in one way or the other
     this.updateImgs();
+    this.renderPagination(this.indexUrl+1,this.urls.length)
   }
+
+  renderPagination(pageNR,TotalPages){
+    document.getElementById("paginationContainer").innerText =`${pageNR}/${TotalPages}`;
+    
+    this.saveCurrentIndexToLocalStorage(this.indexUrl)
+  }
+
+  saveCurrentIndexToLocalStorage(currentIndex){
+    localStorage.setItem("currentIndex", currentIndex);
+    }
 }
+
 
 class ImgsList {
   // this will create the html objects that hold the imgs
@@ -122,6 +138,7 @@ class ImgsList {
       this.imgContainer.appendChild(img);
     }
 
+    
     document.body.appendChild(this.imgContainer);
   }
 
@@ -153,6 +170,12 @@ class ChangeImgsButtons {
     this.rightButton.addEventListener("click", function () {
       callback("right");
     });
+
+    this.PaginationContainer = document.createElement('p');
+    this.PaginationContainer.id ="paginationContainer";
+
+    document.body.appendChild(this.PaginationContainer)
+
   }
 }
 
