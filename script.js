@@ -13,6 +13,9 @@ class Carousel {
     this.indexUrl = 0;
     // this will get all our urls
     this.getListOfImgs();
+
+    // this.carouselPagination(this.indexUrl--, this.indexUrl++);
+    this.carouselPagination(this.indexUrl, this.urls.length); 
   }
 
   getListOfImgs() {
@@ -89,6 +92,7 @@ class Carousel {
     console.log("localStorageValue", localStorageValue);
 
     console.log("nr of imgs urls", this.urls.length);
+
     console.log(direction);
     switch (direction) {
       case "left":
@@ -104,9 +108,29 @@ class Carousel {
 
     console.log(this.indexUrl);
 
+
+// this.carouselPagination(this.indexUrl--, this.indexUrl++)
+    this.carouselPagination(this.indexUrl , this.urls.length);
+
     // we can only use "updateImgs" after "this.indexUrl" is change in one way or the other
     this.updateImgs();
-  }
+    
+    }
+
+    carouselPagination(page , pages){
+      document.getElementById("carousel-pagination").style.margin = "30px";
+      document.getElementById("carousel-pagination").innerText =  `${ page} / ${ pages}`;  
+    
+
+    this.storeInLocalStorage(this.indexUrl)
+    }
+
+    storeInLocalStorage(storedIndex){
+      localStorage.setItem("storedIndex", storedIndex);
+
+    }   
+
+    
 }
 
 class ImgsList {
@@ -122,8 +146,10 @@ class ImgsList {
       this.imgContainer.appendChild(img);
     }
 
+
     document.body.appendChild(this.imgContainer);
   }
+
 
   // this will update the imgs by changing thier src attribute
   updateImgsSrc(urls) {
@@ -153,6 +179,12 @@ class ChangeImgsButtons {
     this.rightButton.addEventListener("click", function () {
       callback("right");
     });
+
+   this.pagination = document.createElement("p");
+   this.pagination.id = "carousel-pagination";
+
+   document.body.appendChild(this.pagination)
+
   }
 }
 
