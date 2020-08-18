@@ -5,8 +5,6 @@
 // JSON.stringify/JSON.parse
 // don't make request to server if there is data in localstorage
 
-localStorage.setItem("user", "ana");
-
 class Carousel {
   constructor() {
     // this will hold the start point for the 3 element array that is needed for rendering the imgs in the "ImgsList" object
@@ -87,13 +85,6 @@ class Carousel {
   // this method will update the start poin for the imgs so that every time the user click on one of the buttons the imgs are updated
 
   changeImgs(direction) {
-    const localStorageValueNoKey = localStorage.getItem("abcd");
-    const localStorageValue = localStorage.getItem("test");
-    console.log("localStorageValueNoKey", localStorageValueNoKey);
-    console.log("localStorageValue", localStorageValue);
-
-    console.log("nr of imgs urls", this.urls.length);
-    console.log(direction);
     switch (direction) {
       case "left":
         this.indexUrl--;
@@ -105,8 +96,6 @@ class Carousel {
       default:
         break;
     }
-
-    console.log(this.indexUrl);
     
     // we can only use "updateImgs" after "this.indexUrl" is change in one way or the other
     this.updateImgs();
