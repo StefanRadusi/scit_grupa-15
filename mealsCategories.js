@@ -1,4 +1,3 @@
-console.log("meals categories");
 
 class PopUp {
   constructor() {
@@ -19,7 +18,6 @@ class PopUp {
     )
       .then((response) => response.json())
       .then((json) => {
-        console.log(json);
         this.displayMeals(popHtml, json);
       });
   }
@@ -31,7 +29,7 @@ class PopUp {
 
   displayMeals(popHtml, json){
     for (const meal of json.meals) {
-console.log(meal.strMealThumb);
+
     const container =  document.createElement("div");
     container.classList.add("popUpDivContainer")
     
@@ -63,11 +61,10 @@ const popUp = new PopUp();
 
 class Categories {
   constructor() {
-    console.log("in constructor");
 
     this.htmlContainer = document.getElementById("meals-categories-container");
     this.getMealsCategories();
-    console.log(this.categories);
+    
   }
 
   getMealsCategories() {
@@ -83,7 +80,7 @@ class Categories {
     // console.log(this.categories);
     this.cards = [];
     for (const category of this.categories) {
-      console.log(category);
+      
       this.cards.push(
         new MealCategory(
           category.strCategory,
@@ -110,7 +107,6 @@ class MealCategory {
     const container = document.createElement("div");
     container.classList.add("meal-category-card");
     container.addEventListener("click", () => {
-      console.log(this.tile);
       popUp.show(this.tile);
     });
 

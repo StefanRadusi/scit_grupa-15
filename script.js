@@ -55,7 +55,7 @@ function renderMeals(meals) {
   mealsContainer.innerHTML = "";
   for (const meal of meals) {
     // please check in the console the structure of the meal object so it will be easier to understand how the data is accessed and used to create the new DOM elements for the meal
-    console.log(meal);
+    
     const mealContainer = document.createElement("div");
     mealContainer.style.marginBottom = "20px";
 
@@ -84,7 +84,6 @@ const buttons = document.getElementsByClassName("nav-button");
 for (const button of buttons) {
   // console.log(button);
   button.addEventListener("click", (event) => {
-    console.log("click", event.target.dataset.page);
 
     // hide all pages
     const pages = document.getElementsByClassName("page");
@@ -95,7 +94,6 @@ for (const button of buttons) {
     // show only specific page
     const activePage = document.getElementById(event.target.dataset.page);
     activePage.classList.add("active-page");
-    console.log(activePage);
 
     for (const button of buttons) {
       button.classList.remove("selected");
