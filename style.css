@@ -128,6 +128,7 @@ body {
   width: 80%;
   height: 80%;
   background: white;
+  overflow: scroll;
 }
 
 #close {
@@ -138,4 +139,28 @@ body {
 
 #pop-up.pop-up-show {
   display: flex;
+}
+
+#img-pop-up {
+ /* width: 100px; */
+ margin: 10px;
+ display: inline-block;
+ /* display: inline-flex; */
+ /* position: static; */
+}
+
+.meal-category-popUp h3 {
+  align-self: center;
+  /* float: right; */
+  /* justify-content: center; */
+
+}
+.meal-category-popUp {
+  position: absolute;
+  flex-direction: column;
+}
+
+.meal-category-popUp img {
+  height: 120px;
+  width: 120px;
 }
