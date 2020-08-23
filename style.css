@@ -1,0 +1,564 @@
+html, body{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+#header{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 5px solid lightgrey;
+}
+
+.title{
+    display: flex;
+    flex-direction: column; 
+}
+.h1-response{
+    margin: 0;
+}
+.h3-response{
+    margin: 0;
+    letter-spacing: 12px;
+    text-decoration-style: solid;
+}
+/* --------------------------------------------------- */
+.site-name{
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.logos{
+    align-items: center;
+    height: 100%;
+    margin: 0;
+    display: flex;
+}
+
+.profile{
+    width: 30px;
+    height: 30px;
+    margin: 0 35px;
+    padding: 15px 15px 0 0;
+}
+
+/* ------------------------------------------------------ */
+.profile-img:hover{
+    background-color: rgb(176,227,212);
+}
+.profile-img{
+    height: 100%;
+    width: 80px;
+    padding-right: 25px;
+    background-color: rgb(176,227,212);
+}
+.reload-img{
+    height: 100%;
+    width: 100px;
+}
+.reload-img:hover{
+    background-color: rgb(176,227,212);
+}
+.home-img{
+    height: 100%;
+    width: 100px;
+}
+.home-img:hover{
+    background-color: rgb(176,227,212);
+}
+.settings-img{
+    height: 100%;
+    width: 100px;
+}
+.settings-img:hover{
+    background-color: rgb(176,227,212);
+}
+/* --------------------svgs for navigation------------------------ */
+.reload{
+    width: 30px;
+    height: 30px;
+    padding: 15px 0 0 35px;
+}
+.home{
+    width: 35px;
+    height: 35px;
+    padding: 15px 0 10px 35px;
+}
+.settings{
+    width: 35px;
+    height: 33px;
+    padding: 15px 0 10px 35px;
+}
+.target{
+    width: 40px;
+    height: 40px;
+    margin: 0 10px 0 30px;
+}
+
+.navigation{
+    margin-left: auto;
+    align-items: center;
+    padding: 0;
+}   
+/* ------------------------------------------------- */
+.logo-2 {
+    display: none;
+}
+
+#content{
+    background-color: rgb(137,145,134);
+    padding-bottom: 25px;
+}
+#page-title{
+    display: flex;
+    width: 100%;
+    margin: auto;
+    justify-content: center;
+}
+.h-content h2{
+    margin: 0;
+    color:  rgb(249,249,249);
+    width: 100%;
+    font-size: 90px;
+    letter-spacing: 21px;
+}
+.h-content h1{
+    margin: 20px 0 0 0;
+    color: rgb(230,254,71);
+    font-size: 120px;
+}
+
+.para{
+    margin: auto;
+    background-color: rgb(242,169,64);
+    color: rgb(248,220,146);
+    padding: 5px;
+    width: 85%;
+}
+.para p{
+    font-size: 30px;
+    text-align: center;
+}
+
+/* ----------------------------------------------------------------- */
+#aside-title{
+    height: 15%;
+    width: 100%;
+    display: flex
+}
+.info {
+   margin: auto;
+}
+.aside-h1{
+  font-size: 50px;
+  margin: 20px 0 0 0;
+  font-weight: bold;
+}
+.aside-para{
+    display: initial;
+    font-size: 30px;
+    text-align: center;
+    margin: 0;
+}
+.title-aside-h1{
+    display: flex;
+    justify-content: center;
+}
+.para-content{
+    display: flex;
+    width: 55%;
+    margin: auto;
+}
+
+/* ----------------------bottom page style-------------- */
+
+#buttom-content{
+    margin-top: 50px;
+    display: flex;
+    background-color: rgb(102,107,101);
+    border: 1px solid rgb(102,107,101);
+    justify-content: space-around;
+}
+.orange-circle{
+    background-color: rgb(238,162,49);
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    margin: 10px 0;
+}
+.two-divs{
+    display: flex;
+    width: 20%;
+    justify-content: space-around;
+}
+.white-div{
+    background-color: rgb(249,249,249);
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    margin: 10px 10px;
+}
+.blue-div{
+    background-color: rgb(133,215,190);
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    margin: 10px 0;
+}
+
+
+/* ---------------------media for navigation, for tablet----------------- */
+@media (max-width: 1024px) and (min-width: 768px){
+    .target{
+        display: initial;
+        width: 65px;
+        height: 65px;
+        margin: 0 10px 0 30px;
+    }
+    .title{
+        display: initial;
+    } 
+    .profile-img{
+        height: 100%;
+        width: 70px;
+        padding: 0;
+    }
+    .profile{
+        width: 55px;
+        height: 55px;
+        padding: 10px;
+        align-items: center;
+        margin: 10px 5px;
+    }
+    .reload-img{
+        height: 100%;
+        width: 70px;
+        padding: 0;
+    }
+    .reload{
+        width: 55px;
+        height: 55px;
+        padding: 10px;
+        align-items: center;
+        margin: 10px 5px;
+    }
+    .home-img{
+        height: 100%;
+        width: 70px;
+        padding: 0;
+        margin-right: 20px;
+    }
+    .home{
+        width: 55px;
+        height: 55px;
+        padding: 10px;
+        align-items: center;
+        margin: 10px 5px;
+    }
+    .settings-img{
+        height: 100%;
+        width: 70px;
+        padding: 0;
+    }
+    .settings{
+        width: 55px;
+        height: 55px;
+        padding: 10px;
+        align-items: center;
+        margin: 10px 5px;
+    }
+    #header{
+        justify-content: initial;
+    }
+    .navigation{
+        margin-left: 0;
+        width: 100%;
+    } 
+    .logos {
+        justify-content: space-around;
+    }
+    .site-name{
+        margin: 0;
+    }
+    .h1-response{
+        margin: 0;
+    }
+    .h3-response{
+        margin: 0;
+        width: 100%;
+        letter-spacing: 10px;
+    }
+}
+/* -----------------media for content, for tablet------------------ */
+@media (max-width: 1024px) and (min-width: 768px) {
+    .logo-2 {
+        display:none;
+    }
+    #page-title{
+        display: flex;
+        width: 100%;
+        margin: auto;
+        justify-content: center;
+    }
+    .h-content h1{
+        margin: 20px 0 0 0;
+        color: rgb(230,254,71);
+        font-size: 90px;
+    }
+    .h-content h2{
+        margin: 0;
+        color:  rgb(249,249,249);
+        width: 100%;
+        font-size: 60px;
+        letter-spacing: 21px;
+    }
+
+    #content{
+        height: 55%;
+        padding-bottom: 5px;
+    }
+    .para p{
+        margin-bottom: 0;
+        font-size: 30px;
+        text-align: center;
+    }
+}
+/* -------------------media for middle text, for tablet--------------- */
+@media(max-width: 1024px) and (min-width: 768px) {
+    #aside-title{
+        height: 25%;
+        width: 100%;
+        display: flex
+    }
+    .info {
+       margin: auto;
+    }
+    .aside-h1{
+      font-size: 50px;
+      margin: 20px;
+      font-weight: bold;
+    }
+    .aside-para{
+        display: initial;
+        padding: 20px;
+        font-size: 30px;
+        text-align: center;
+    }
+    .title-aside-h1{
+        display: flex;
+        justify-content: center;
+    }
+    .para-content{
+        display: flex;
+    }
+}
+/* ---------------------media for bottom text, for tablet--------------- */
+@media (max-width: 1024px) and (min-width: 768px){
+    #buttom-content{
+        display: flex;
+        background-color: rgb(102,107,101);
+        border: 1px solid rgb(102,107,101);
+        justify-content: space-around;
+    }
+    .orange-circle{
+        background-color: rgb(238,162,49);
+        width: 60px;
+        height: 60px;
+        border-radius: 30px;
+        margin: 10px 0;
+    }
+    .two-divs{
+        display: flex;
+    }
+    .white-div{
+        background-color: rgb(249,249,249);
+        width: 60px;
+        height: 60px;
+        border-radius: 30px;
+        margin: 10px 10px;
+    }
+    .blue-div{
+        background-color: rgb(133,215,190);
+        width: 60px;
+        height: 60px;
+        border-radius: 30px;
+        margin: 10px 0;
+    }
+}
+
+
+/* ------------------------------phones displays------------------ */
+
+/* ---------------------media for navigation----------------- */
+@media (max-width: 736px) and (min-width: 320px){
+    .target{
+        display: none;
+    }
+    .title{
+        display: none;
+    } 
+    .profile-img{
+        height: 100%;
+        width: 70px;
+        padding: 0;
+        margin: 0 20px 0 0;
+    }
+    .profile{
+        width: 25px;
+        height: 25px;
+        padding: 10px;
+        align-items: center;
+        margin: 10px 5px;
+    }
+    .reload-img{
+        height: 100%;
+        width: 70px;
+        padding: 0;
+        margin-right: 20px;
+    }
+    .reload{
+        width: 25px;
+        height: 25px;
+        padding: 10px;
+        align-items: center;
+        margin: 10px 5px;
+    }
+    .home-img{
+        height: 100%;
+        width: 70px;
+        padding: 0;
+        margin-right: 20px;
+    }
+    .home{
+        width: 25px;
+        height: 25px;
+        padding: 10px;
+        align-items: center;
+        margin: 10px 5px;
+    }
+    .settings-img{
+        height: 100%;
+        width: 70px;
+        padding: 0;
+    }
+    .settings{
+        width: 25px;
+        height: 25px;
+        padding: 10px;
+        align-items: center;
+        margin: 10px 5px;
+    }
+    #header{
+        justify-content: initial;
+    }
+    .navigation{
+        margin-left: 0;
+        width: 100%;
+    } 
+    .logos {
+        justify-content: space-between;
+    }
+    .site-name{
+        margin: 0;
+    }
+}
+/* -----------------media for content------------------ */
+@media (max-width: 736px) and (min-width: 320px) {
+    .logo-2 {
+        display: flex;
+        width: 30%;
+    }
+    .target-2 {
+        width: 70px;
+        height: 70px;
+    }
+    #page-title{
+        display: flex;
+        width: 100%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        padding-left: 15px;
+    }
+    .h-content{
+       width: 70%;
+    }
+    .h-content h1{
+        margin: 20px 0 0 0;
+        color: rgb(230,254,71);
+        font-size: 30px;
+    }
+    .h-content h2{
+        margin: 0;
+        color:  rgb(249,249,249);
+        width: 100%;
+        font-size: 20px;
+        letter-spacing: 7px;
+    }
+
+    #content{
+        height: 55%;
+        padding-bottom: 15px;
+    }
+}
+/* -------------------media for middle text--------------- */
+@media(max-width: 736px) and (min-width: 320px) {
+    #aside-title{
+        height: 25%;
+        width: 100%;
+        display: flex
+    }
+    .info {
+       margin: auto;
+    }
+    .aside-h1{
+      justify-content: center;
+      font-size: 30px;
+      margin: 20px 0 0 0;
+      font-weight: bold;
+    }
+    .aside-para{
+        display: none;
+    }
+    .para p{
+        margin-bottom: 0;
+        font-size: initial;
+    }
+}
+/* ---------------------media for bottom text--------------- */
+@media (max-width: 736px) and (min-width: 320px){
+    #buttom-content{
+        display: flex;
+        background-color: rgb(102,107,101);
+        border: 1px solid rgb(102,107,101);
+        justify-content: space-around;
+        margin-top: 20px;
+    }
+    .orange-circle{
+        background-color: rgb(238,162,49);
+        width: 60px;
+        height: 60px;
+        border-radius: 30px;
+        margin: 10px 0;
+    }
+    .two-divs{
+        display: flex;
+        width: initial;
+    }
+    .white-div{
+        background-color: rgb(249,249,249);
+        width: 60px;
+        height: 60px;
+        border-radius: 30px;
+        margin: 10px 10px;
+    }
+    .blue-div{
+        background-color: rgb(133,215,190);
+        width: 60px;
+        height: 60px;
+        border-radius: 30px;
+        margin: 10px 0;
+    }
+}
