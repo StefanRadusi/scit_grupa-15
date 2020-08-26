@@ -1,0 +1,460 @@
+html,
+body{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.header{
+    display: flex;
+    align-items: center;
+    border-bottom: 5px solid lightgray;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 12%;
+}
+
+.target-arrow{
+    fill: orange;
+}
+
+#logos{
+    padding-bottom: 20px;
+    
+}
+
+.logo-1{
+    margin: 20px;
+    color: grey;
+    font-size: 30px;
+    margin-bottom: 0px;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.logo-span{
+    font-size: 15px;
+    word-spacing: 15px;
+    letter-spacing: 10px;
+}
+
+.navigation{
+    align-items: center;
+    margin-left: auto;
+}
+
+#user-icon{
+    padding: 0;
+    border: none;
+    width: 50px;
+    height: 70px;
+    background-color: lightskyblue;
+    
+}
+
+#user-icon svg{
+    width: 20px;
+    height: 20px;
+    
+}
+
+#recycle-icon,
+#home-icon,
+#settings-icon{
+    width: 50px;
+    height: 70px;
+    padding: 0;
+    border: none;
+    background: none;
+}
+
+#recycle-icon svg,
+#home-icon svg,
+#settings-icon svg{
+    width: 20px;
+    height: 20px;
+}
+ 
+.content{
+    display: flow-root;
+    background-color: dimgrey;
+    -moz-box-shadow:    inset 0 0 10px #000000;
+    -webkit-box-shadow: inset 0 0 10px #000000;
+    box-shadow:         inset 0 0 10px #000000; 
+
+}
+
+.heading{
+    text-align: center;
+    color: yellow;  
+    font-size: 80px;
+    letter-spacing: 4px;
+}
+
+.h1-span{
+    font-size: 45px;
+    word-spacing: 100px;
+    letter-spacing: 13px;
+    color: palegoldenrod;
+}
+
+.paragraph{
+    text-align: center;
+    background-color: orange;
+    margin: 50px;
+    padding: 20px;
+    color: white;
+}
+
+.footer-title{
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 0%;
+    color: dimgrey; 
+}
+
+.footer-description{
+    text-align: center;
+    margin-top: 0%;
+    font-size: 10px;
+    color: dimgrey;
+}
+
+@media only screen and (max-width: 1024px){
+    .header{
+        display: inline-flex;
+        align-items: baseline;
+        border-bottom: 5px solid lightgray;
+    }
+
+    .target-arrow{
+        width: 65px;
+        height: 65px;
+    }
+
+   .logo-1{
+       font-size: 60px;
+
+   }
+
+
+   .navigation{
+       margin-right: auto;
+   }
+
+
+   .logo-span{
+       font-size: 30px;
+       letter-spacing: 10px;
+       word-spacing: 40px;
+   }
+
+    #user-icon{
+        padding: 15px 32px;
+        border: none;
+        margin: 20px;
+        background-color:white;
+        margin-top: 40px;
+
+    }
+
+   
+
+    #user-icon svg{
+        width: 50px;
+        height: 50px;
+        margin-left: 30px;
+        padding-left: 70px; 
+        fill: grey;
+    } 
+
+
+    #recycle-icon,
+    #home-icon
+    #settings-icon{
+        border: none;
+        background: none;
+        margin: 20px;
+        margin-top: 40px;
+    }
+
+    #recycle-icon svg,
+    #home-icon svg,
+    #settings-icon svg{
+        width: 50px;
+        height: 50px;
+        margin-left: 90px;
+        fill: grey;
+
+    }
+    
+
+    .content{
+        height: 650px;
+        font-size: 22px;
+    }
+
+    .heading{
+        font-size: 60px;
+    }
+
+    .h1-span{
+        font-size: 75px;
+        word-spacing: 64px;
+        letter-spacing: 23px;
+
+    }
+
+   .orange-dot{
+    height: 65px;
+    width: 65px;
+    background-color:orange;
+    border-radius: 50%;
+    display: inline-block;
+    margin-top: 50px;
+    margin-left: 280px;
+    margin-right: 250px;
+   }
+
+   .white-dot{
+    height: 65px;
+    width: 65px;
+    background-color:white;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 40px;
+   }
+
+   .blue-dot{
+    height: 65px;
+    width: 65px;
+    background-color:blue;
+    border-radius: 50%;
+    display: inline-block;
+   }
+
+   .footer-dots{
+       border-bottom: white;
+   }
+   .footer{
+       height: 155px;
+   }
+
+   #footer-extension{
+       background-color:dimgray;
+       height: 350px;
+       -moz-box-shadow:    inset 0 0 10px #000000;
+       -webkit-box-shadow: inset 0 0 10px #000000;
+       box-shadow:         inset 0 0 10px #000000; 
+   }
+
+   .footer-title{
+       font-size: 50px;
+   }
+
+   .footer-description{
+       font-size: 20px;
+       padding-left: 40px;
+       padding-right: 40px;
+   }
+
+   .footer-extension-description{
+       padding-left: 130px;
+       padding-right: 130px;
+       padding-top: 20px;
+       text-align: center;
+       font-size: 20px;
+       color: wheat;
+   }
+
+}
+
+.footer-extension-desciption{
+    display: flex;
+}
+
+@media only screen and (max-width: 768px){
+    .header{
+        display: flex;
+        align-items: center;
+        /* border-bottom: 5px solid lightgray; */
+        /* padding-left: 20px; */
+        /* padding-right: 20px; */
+        /* height: 12%; */
+    }
+
+
+    .target-arrow{
+        width: 50px;
+        height: 50px;
+    }
+    .logo-1{
+        font-size: 41px;
+    }
+
+    .logo-span{
+        font-size: 21px;
+    }
+
+    #user-icon svg{
+        width: 40px;
+        height: 45px;
+        margin-top: 0;
+        padding: 0;
+        fill: grey;
+        margin-bottom: 15px;
+        margin-left: 3px;
+    }
+
+    #user-icon{
+        background-color: lightblue;
+        height: 70px;
+        width: 80px;
+        margin: 0px;
+        margin-right: 0px;
+    }
+
+    #recycle-icon,
+    #home-icon,
+    #settings-icon{
+        background-color: white;
+        height: 70px;
+        width: 80px;
+        margin-left: 0px;
+    }
+
+    #recycle-icon svg,
+    #home-icon svg,
+    #settings-icon svg{
+        width: 40px;
+        height: 45px;
+        margin-top: 0;
+        padding: 0;
+        fill: grey;
+        margin-bottom: 15px;
+        margin-left: 3px;
+    }
+
+    .content{
+        height: 600px;
+    }
+
+    .heading{
+        font-size: 50px;
+    }
+
+    .h1-span{
+        font-size: 55px;
+    }
+
+    .footer{
+        margin-bottom: 30px;
+    }
+
+    #footer-extension{
+        height: 300px;
+    }
+
+    .orange-dot{
+        margin-left: 140px;
+    }
+
+    .white-dot,
+    .blue-dot{
+        margin-top: 48px;
+        margin-right: 30px;
+    }
+}
+
+    @media only screen and (max-width: 375px){
+        .target-arrow,
+        #logos{
+            display: none;
+        }
+
+        .navigation{
+            display: flex;
+        }
+
+        #user-icon{
+            height: 95px;
+            width: 85px;
+        }
+   
+        #recycle-icon{
+            height: 70px;
+            width: 85px;
+        }
+
+        #recycle-icon svg{
+            width: 35px;
+            padding-bottom: 15px;
+        }
+
+        #home-icon,
+        #settings-icon{
+            margin-left: 0px;
+            margin-right: 0px;
+        }
+
+        .content{
+            height: 500;
+            display: flex;
+        }
+
+        .heading{
+            font-size: 25px;
+        }
+
+        .h1-span{
+            font-size: 25px;
+            letter-spacing: 10px;
+        }
+
+        .paragraph{
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .footer{
+            height: 40px;
+        }
+
+        .footer-title{
+            margin-top: 20px;
+        }
+
+        .footer-description{
+            display: none;
+        }
+
+        #footer-extension{
+            height: 120px;
+            display: flex;
+        }
+
+       
+        .orange-dot{
+            height: 45px;
+            width: 45px;
+            margin-left: 50px;
+            margin-top: 40px;
+            margin-right: 100px;
+        }
+
+        .white-dot,
+        .blue-dot{
+            height: 45px;
+            width: 45px;
+            /* margin-right: 50px; */
+            margin-top: -100px;
+            /* margin-left: 100px; */
+        }
+
+        .footer-extension-description{
+            display: none;
+        }
+}
+
