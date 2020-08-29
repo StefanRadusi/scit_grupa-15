@@ -15,7 +15,7 @@ class PopUp {
 
   renderMealsList(mealCatergory) {
     fetch(
-      `https://www.themealdb.com/api/json/v1/1/filter.php?c=${mealCatergory}`
+      'https://www.themealdb.com/api/json/v1/1/filter.php?c=' + mealCatergory
     )
       .then((response) => response.json())
       .then((json) => {
@@ -25,6 +25,48 @@ class PopUp {
 
   close() {
     this.popHtml.classList.remove("pop-up-show");
+    this.MealContainer.innerHTML = "";
+  }
+
+
+  showMeals(mealsList) {
+    this.MealContainer = document.getElementById("pop-up-content");
+    this.arrayMealList = [];
+    for (const meal of mealsList) {
+      this.arrayMealList.push(
+        new MealElement(
+          meal.strMealThumb,
+          meal.strMeal,
+          this.MealContainer
+        )
+      )
+    }
+  }
+}
+class MealElement {
+  constructor (img, title, parent) {
+    this.img = img;
+    this.title = title;
+    this.parent = parent;
+
+    this.MealPopUpContent();
+  }
+
+  MealPopUpContent() {
+    let mealContainerPopUp;
+    mealContainerPopUp = document.createElement("div");
+    mealContainerPopUp.classList.add("meal-container-pop-up");
+    this.parent.appendChild(mealContainerPopUp);
+
+    let mealImgPop;
+    mealImgPop = document.createElement("img");
+    mealImgPop.src = this.img;
+    mealContainerPopUp.appendChild(mealImgPop);
+
+    let mealTitlePop;
+    mealTitlePop = document.createElement("h4");
+    mealTitlePop.innerText = this.title;
+    mealContainerPopUp.appendChild(mealTitlePop);
   }
 }
 
@@ -79,19 +121,19 @@ class MealCategory {
     const container = document.createElement("div");
     container.classList.add("meal-category-card");
     container.addEventListener("click", () => {
-      console.log(this.tile);
+      // console.log(this.tile);
       popUp.show(this.tile);
     });
 
-    const tileHtml = document.createElement("h3");
+    let tileHtml = document.createElement("h3");
     tileHtml.innerText = this.tile;
     container.appendChild(tileHtml);
 
-    const imgHtml = document.createElement("img");
+    let imgHtml = document.createElement("img");
     imgHtml.src = this.img;
     container.appendChild(imgHtml);
 
-    const descHtml = document.createElement("p");
+    let descHtml = document.createElement("p");
     descHtml.innerText = this.shortDesc;
     container.appendChild(descHtml);
 
