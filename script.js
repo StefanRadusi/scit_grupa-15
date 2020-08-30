@@ -1,4 +1,5 @@
-// 1. (mandatory) Create a function that calculate a the sum of numbers from 1 to N.
+// 1.(mandatory) Create a function that calculate a the sum of numbers from 1 to N.
+
 
 function sumOfRecursive(number) {
     if (number === 0) return 0;
@@ -19,4 +20,36 @@ function power(n, m) {
 }
 console.log(power(2, 3));
 
-// 3. (optional) Create a function that find the maximum number in a data structure.
+// // 3. (optional) Create a function that find the maximum number in a data structure.
+// const beta = {
+//     a: {
+//         x: [3, 20, 11],
+//         y: {
+//             z: 9
+//         }
+//     },
+//     b: 0,
+//     c: 12
+// }
+
+// function findMax(data, max, parent) {
+//     if (typeof data === "object" && data !== null) {
+//         for (const key of Object.keys(data)) {
+//             const obj = data[key];
+//             const result = findMax(obj, max, data);
+//             if (result !== null) return result;
+//         }
+//     }
+//     max = data[key[1]];
+//     if (typeof data === 'number') {
+//         if (data < max) return max;
+//     } else {
+//         max = data;
+
+//     } return null;
+// }
+
+// console.log(findMax(beta, 6));
+
+
+
