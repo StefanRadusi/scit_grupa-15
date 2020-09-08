@@ -1,0 +1,508 @@
+html {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  }
+  
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  }
+  
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  height: 50px;
+  border-bottom: 8px solid rgb(146, 148, 143);
+  }
+
+ #logo-header {
+  display: none;
+}
+
+.navigation-title-header {
+  display: none;
+}
+
+.navigation-title p {
+  align-self: center;
+}
+
+.navigation-svgs {
+  display: flex;
+  flex: 1;
+  margin-left: auto;
+  height: 100%;
+  align-items: center;
+  justify-items: center;
+  margin: 0;
+}
+
+.nav-button {
+  margin: 10px;
+  /* padding: 5px; */
+  flex: 0.25;
+}
+
+.nav-button:hover {
+  background-color: teal;
+  height: (100% - 8px);
+  align-items: center;
+  justify-items: center;
+  fill: white;
+  margin: 10px;
+  /* padding: 5px; */
+  flex: 0.25;
+}
+    
+.page-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.page-body {
+  display: flex;
+  flex: 1;
+  background-color: rgb(69, 75, 58);
+  /* flex : inherit; */
+  flex-direction: column;
+  align-items: center;
+   /* height: 80%;    */
+}
+
+.page-inner-title {
+  display: flex;
+  justify-content: center; 
+  align-self: center;
+  align-items: center;
+  flex-grow: 0.5;
+  width: 100%;
+} 
+
+.p-page-inner-title {
+  display: flex;
+  flex-direction: column;
+}
+
+#logo-body {
+  display: inline;
+  align-self: center;
+  height: 100%;
+  width: 100%;
+}
+#logo-body path {
+  fill: orangered;
+
+}
+
+#p1-page-inner-title {
+  color: rgb(170, 255, 13);
+  font-size: 40px ;
+  padding: 5px;
+   text-align: center;
+   margin: 0;
+}
+
+#p2-page-inner-title {
+  color: white;
+  font-size: 25px;
+  width: 100%;
+  text-align: center;
+  /* text-emphasis: 100%; */
+  letter-spacing: 10px;
+  margin: 0;
+}
+
+#lorem-page {
+  background-color: chocolate;
+  margin-left: 50px;
+  margin-right: 50px;
+  height: 40%;  
+  width: 80%;
+  text-align: center; 
+  padding-top: 10px;
+  font-size: 15px;
+  color: white;
+}
+
+.page-footer {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  background-color: white; 
+}
+
+#p1-page-footer {
+  justify-items: center;
+  text-align: center;
+  color: lightgrey;
+  font-size: 20px ;
+  padding: 10px;
+}
+
+#p2-page-footer {
+  display: none;
+  text-align: center;
+  margin-bottom: 30px;
+  justify-content: center;
+}
+
+.page-bottom {
+    /* height: 100px; */
+  display: flex;
+  flex-direction: column;
+  background-color:rgb(69, 75, 58) ;
+}
+
+.page-buttom-circles {
+  align-self: center;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+/*  
+  border-bottom: 2px solid white;
+  border-bottom-width: 50%; */
+}
+
+.circle {
+  width: 50px;
+  height: 50px;
+  margin-top: 20px;
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-bottom: 5px;
+  border-radius: 50%;
+}
+
+#circle1 {
+  background-color: chocolate;
+}
+
+#circle2 {
+  opacity: 0;
+}
+
+#circle3 {
+  background-color: white;
+}
+
+#circle4 {
+  background-color: turquoise;
+}
+
+.page-bottom-text {
+  display: none;
+}
+
+
+@media only screen and (min-width: 767px) and (max-width: 1024px) {
+  #logo-body {
+  display: none;
+}
+
+  .header {
+    display: flex;
+    height: 10%;
+}
+
+  #logo-header {
+    display: block;
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 70px;
+    width: 70px;
+}
+
+ #logo-header path {
+    fill: orangered;
+}
+
+ .navigation-title-header {
+    display: block;
+    height: 100%;
+    margin-left: 10px; 
+    width: 40%;
+    align-content: center;
+}
+
+ .navigation-title p {
+    align-self: center;
+    width: 400px;
+}
+
+#p1-navigation-title {
+    color: rgb(47, 49, 44);
+    font-weight: bolder;
+    font-size: 30px ;
+    width: 100%;  
+    text-align: center;
+    padding-top: 25px;
+    margin: 0;
+}
+
+#p2-navigation-title {
+    color:  rgb(47, 49, 44);
+    font-size: 25px;
+    text-size-adjust: auto;
+    width: 100%;
+    text-align: center;
+    letter-spacing: 3px;
+    margin: 0;
+}
+
+.navigation-svgs {
+    height: 100%;
+    align-items: center;
+    justify-items: center;
+}
+
+.nav-button {
+  height: 100%;
+}
+
+.nav-button:hover {
+    background-color: teal;
+    height: (100% - 8px);
+    align-items: center;
+    justify-items: center;
+    fill: white;
+}
+
+#p1-page-inner-title {
+    margin: 0;
+    color: rgb(170, 255, 13);
+    font-size: 5em;
+    padding: 10px;
+    text-align: center;
+}
+
+#p2-page-inner-title {
+    margin: 0;
+    color: white;
+    font-size: 3em;
+    width: 100%;
+    text-align: center;
+    letter-spacing: 22;
+}
+
+#lorem-page {
+    background-color: chocolate;
+    margin-left: 50px;
+    margin-right: 50px;
+    height: 30%;  
+    width: 80%;
+    text-align: center; 
+    padding-top: 10px;
+    font-size: 25px;
+    color: white;
+}
+
+#p1-page-footer {
+  justify-items: center;
+  text-align: center;
+  color: lightgrey;
+  font-size: 50px;
+  margin: 0;
+}
+
+#p2-page-footer {
+    display: flex;
+    text-align: center;
+    margin-bottom: 30px;
+    justify-content: center;
+    font-size: 20px;
+}
+
+ .page-footer {
+   height: 20%;
+ }
+  .page-buttom-circles {
+    align-self: center;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+     border-bottom: 2px solid white;
+  }
+
+  
+  .circle {
+    width: 65px;
+    height: 65px;
+    margin-top: 20px;
+    margin-right: 30px;
+    margin-left: 30px;
+    margin-bottom: 5px;
+    border-radius: 50%;
+  }
+  
+  #circle1 {
+    background-color: chocolate;
+  }
+  
+  #circle2 {
+    opacity: 0;
+  }
+  
+  #circle3 {
+    background-color: white;
+  }
+  
+  #circle4 {
+    background-color: turquoise;
+  }
+
+  .page-bottom-text {
+    display: block;
+    position: relative;
+    align-self: center;
+    align-content: center;
+    text-align: center;
+    color: white;
+    border-bottom-width: 60%;
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+  #logo-body {
+    display: none;
+  }
+  
+    .header {
+      display: flex;
+      height: 10%;
+  }
+  
+    #logo-header {
+      display: block;
+      margin-left: 30px;
+      height: 70px;
+      width: 70px;
+  }
+  
+   #logo-header path {
+      fill: orangered;
+  }
+  
+   .navigation-title-header {
+      display: block;
+      height: 100%;
+      margin-left: 5px; 
+      width: 20%;
+      align-content: center;
+  }
+  
+   .navigation-title p {
+      align-self: center;
+      width: 400px;
+  }
+  
+  #p1-navigation-title {
+      color: rgb(47, 49, 44);
+      font-weight: bolder;
+      font-size: 25px ;
+      width: 100%;  
+      text-align: center;
+      margin: 0;
+      padding-top: 30px;
+  }
+  
+  #p2-navigation-title {
+      color:  rgb(47, 49, 44);
+      font-size: 20px;
+      width: 100%;
+      text-align: center;
+      /* text-emphasis: 100%; */
+      letter-spacing: 3px;
+      margin-top: 0;
+  }
+  
+  .navigation-svgs {
+      display: flex;
+     
+      height: 100%;
+      /* align-items: center;
+      justify-items: center; */
+      flex: 0.3;
+      margin-left: auto;
+  }
+  
+  .nav-button {
+    height: 100%;
+    margin-left: auto;
+  }
+  
+  .nav-button:hover {
+      background-color: teal;
+      height: (100% - 8px);
+      /* width: 100%; */
+      align-items: center;
+      justify-items: center;
+  }
+  
+  #p1-page-inner-title {
+      color: rgb(170, 255, 13);
+      font-size: 5em;
+      padding: 5px;
+      margin-bottom: 10px;
+      text-align: center;
+  }
+  
+  #p2-page-inner-title {
+      color: white;
+      font-size: 4em;
+      width: 100%;
+      text-align: center;
+      /* text-emphasis: 100%; */
+      letter-spacing: 10;
+  }
+  
+  #lorem-page {
+      background-color: chocolate;
+      margin-left: 50px;
+      margin-right: 50px;
+      height: 30%;  
+      width: 80%;
+      text-align: center; 
+      padding-top: 10px;
+      font-size: 35px;
+      color: white;
+  }
+  
+  .page-footer {
+      height: 20%; 
+      width: 50%; 
+  }
+  #p1-page-footer {
+    font-size: 40px;
+    margin: 0;
+    padding-bottom: 10px;
+
+  }
+  
+  #p2-page-footer {
+      display: block;
+      text-align: center;
+      margin-bottom: 30px;
+      justify-content: center;
+  }
+  
+   .page-bottom {
+  display: none;
+  } 
+  
+
+
+}
