@@ -11,3 +11,12 @@ body {
 p {
   margin: 0;
 }
+.div-class {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+}
+
+.element-style {
+  margin-left: 10px;
+}
