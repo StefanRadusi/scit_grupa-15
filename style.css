@@ -134,8 +134,25 @@ body {
   position: absolute;
   top: 20px;
   right: 20px;
+  border-radius: 50%;
 }
 
 #pop-up.pop-up-show {
   display: flex;
 }
+.meal-container-pop-up {
+  display: flex;
+ 
+  }
+
+
+.meal-container-pop-up img {
+    height: 100px;
+    width: 100px;
+    margin: 25px;
+    border-radius: 50%;
+  }
+
+.meal-container-pop-up h4 {
+    align-self: center;
+  }

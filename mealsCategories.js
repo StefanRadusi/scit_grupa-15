@@ -20,11 +20,51 @@ class PopUp {
       .then((response) => response.json())
       .then((json) => {
         console.log(json);
+        this.displayMeals(json.meals);
       });
   }
 
   close() {
     this.popHtml.classList.remove("pop-up-show");
+    this.ContentContainer.innerHTML = "";
+  }
+
+  displayMeals(mealsList) {
+    this.ContentContainer = document.getElementById("pop-up-content");
+    this.ArrayMealList = [];
+    for (const meal of mealsList) {
+      this.ArrayMealList.push(
+        new MealElement(
+          meal.strMealThumb,
+          meal.strMeal,
+          this.ContentContainer
+        )
+      )
+    }
+  }
+}
+
+class MealElement {
+  constructor(img, title, parent) {
+    this.img = img;
+    this.title = title;
+    this.parent = parent;
+
+    this.PopUpContent();
+  }
+
+  PopUpContent() {
+    const mealContainerPopUp = document.createElement("div");
+    mealContainerPopUp.classList.add("meal-container-pop-up");
+    this.parent.appendChild(mealContainerPopUp);
+
+    const mealImgPop = document.createElement("img");
+    mealImgPop.src = this.img;
+    mealContainerPopUp.appendChild(mealImgPop);
+
+    const mealTitlePop = document.createElement("h4");
+    mealTitlePop.innerText = this.title;
+    mealContainerPopUp.appendChild(mealTitlePop);
   }
 }
 
